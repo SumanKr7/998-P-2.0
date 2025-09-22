@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="breadcrumb__section bd-contact__section pt-120 pb-90">
+    <div class="container">
+       <div class="row justify-content-center">
+          <div class="col-lg-8">
+             <div class="postbox__comment-form mb-30">
+                <h3 class="postbox__comment-form-title text-center">Register</h3>
+                <form action="#">
+                   <div class="row">
+                      <div class="col-xxl-6 col-xl-6 col-lg-6">
+                         <div class="postbox__comment-input">
+                            <input type="text" placeholder="Your Name">
+                         </div>
+                      </div>
+                      <div class="col-xxl-6 col-xl-6 col-lg-6">
+                         <div class="postbox__comment-input">
+                            <input type="email" placeholder="Your Email">
+                         </div>
+                      </div>
+                      <div class="col-xxl-6 col-xl-6 col-lg-6">
+                         <div class="postbox__comment-input">
+                            <input type="text" placeholder="Mobile Number">
+                         </div>
+                      </div>
+                      <div class="col-xxl-6 col-xl-6 col-lg-6">
+                         <div class="postbox__comment-input">
+                            <div class="nice-select" tabindex="0">
+                                <span class="current">Profession</span>
+                                <ul class="list">
+                                    <li data-value="CA" class="option selected focus">CA</li>
+                                    <li data-value="CS" class="option">CS</li>
+                                    <li data-value="Lawyer" class="option">Lawyer</li>
+                                    <li data-value="IP" class="option">IP</li>
+                                </ul>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="col-xxl-12">
+                         <div class="postbox__comment-input">
+                            <div class="nice-select" tabindex="0">
+                                <span class="current">Firm Size</span>
+                                <ul class="list">
+                                    <li data-value="1-10" class="option selected focus">1-10</li>
+                                    <li data-value="10-50" class="option">10-50</li>
+                                    <li data-value="50-200" class="option">50-200</li>
+                                    <li data-value="200-1000" class="option">200-1000</li>
+                                    <li data-value="1000+" class="option">1000+</li>
+                                </ul>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="col-xxl-12 text-center">
+                         <div class="postbox__comment-btn">
+                            <button type="submit" class="bd-btn">Register Now</button>
+                         </div>
+                      </div>
+                   </div>
+                </form>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+
+
+{% endblock %}
