@@ -33,8 +33,6 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
       <![endif]-->
 
-
-
    <!-- pre loader area start -->
    <div class="bd-preloader">
       <div class="bd-preloader__center">
@@ -53,589 +51,7 @@
    </div>
    <!-- back to top end -->
 
-   <div class="floating-bubble {{ 'bubble-maximized' if current_path == '/' else 'bubble-minimized' }}"
-      id="floatingBubble">
-      <div class="bubble-content">
-         <!-- Minimized view -->
-         <div class="bubble-icon">Survey</div>
-
-         <!-- Maximized view -->
-         <div class="bubble-header">
-            <div class="bubble-title">Survey</div>
-            <button class="minimize-btn" onclick="minimizeBubble()">−</button>
-         </div>
-         <div class="bubble-body">
-            <div class="survey-container">
-               <!-- Survey Questions -->
-               <div class="survey-intro">
-                  <p>As a gesture of appreciation for your valuable inputs, professionals who complete this survey with
-                     fair and thoughtful estimations will be eligible to receive a FREE 1-year subscription to our
-                     upcoming ERP system — specially designed for you!
-                  </p>
-                  <p>Please fill in your details to receive your Win-Voucher* upon verification.</p>
-                  <p class="small-text">*Cross-verification of your identity and participation may be undertaken before
-                     issuing the Win-Voucher.</p>
-               </div>
-
-               <div class="survey-section">
-                  <h3>Your Details</h3>
-                  <div class="survey-question">
-                     <h4>Your Full Name: <span class="required">*</span></h4>
-                     <input type="text" class="survey-input" name="fullName" required>
-                  </div>
-                  <div class="survey-question">
-                     <h4>Mobile Number: <span class="required">*</span></h4>
-                     <input type="tel" class="survey-input" name="mobileNumber" required>
-                  </div>
-                  <div class="survey-question">
-                     <h4>Email Id: <span class="required">*</span></h4>
-                     <input type="email" class="survey-input" name="emailId" required>
-                  </div>
-               </div>
-
-               <div class="survey-section">
-                  <h3>Section A: About You</h3>
-                  <div class="survey-question">
-                     <h4>1. You are a Practicing: (Select all that apply) <span class="required">*</span></h4>
-                     <div class="checkbox-group">
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="practicingAs" value="CA">
-                           <span class="checkbox-label">A Chartered Accountant (CA)</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="practicingAs" value="CS">
-                           <span class="checkbox-label">A Company Secretary (CS)</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="practicingAs" value="Lawyer">
-                           <span class="checkbox-label">A Lawyer</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="practicingAs" value="IP">
-                           <span class="checkbox-label">An Insolvency Professional (IP)</span>
-                        </label>
-                     </div>
-                  </div>
-
-                  <div class="survey-question">
-                     <h4>2. How do you operate? <span class="required">*</span></h4>
-                     <div class="radio-group">
-                        <label class="radio-option">
-                           <input type="radio" name="howOperate" value="individual">
-                           <span class="radio-label">Individual practice</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="howOperate" value="partnership">
-                           <span class="radio-label">Partnership / LLP / Firm</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="howOperate" value="teamBased">
-                           <span class="radio-label">Team-based model</span>
-                        </label>
-                     </div>
-                  </div>
-
-                  <div class="survey-question">
-                     <h4>3. Your annual professional income (in ₹): <span class="required">*</span></h4>
-                     <div class="radio-group">
-                        <label class="radio-option">
-                           <input type="radio" name="annualIncome" value="lessThan5L">
-                           <span class="radio-label">Less than ₹5 lakhs</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="annualIncome" value="5to15L">
-                           <span class="radio-label">₹5–15 lakhs</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="annualIncome" value="16to30L">
-                           <span class="radio-label">₹16–30 lakhs</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="annualIncome" value="31to50L">
-                           <span class="radio-label">₹31–50 lakhs</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="annualIncome" value="moreThan50L">
-                           <span class="radio-label">More than ₹50 lakhs</span>
-                        </label>
-                     </div>
-                  </div>
-
-                  <div class="survey-question">
-                     <h4>4. Where do you primarily practice? <span class="required">*</span></h4>
-                     <div class="radio-group">
-                        <label class="radio-option">
-                           <input type="radio" name="practiceLocation" value="tier1">
-                           <span class="radio-label">Tier 1 City</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="practiceLocation" value="tier2">
-                           <span class="radio-label">Tier 2 City</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="practiceLocation" value="tier3">
-                           <span class="radio-label">Tier 3 Town</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="practiceLocation" value="rural">
-                           <span class="radio-label">Rural Area</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="practiceLocation" value="panIndia">
-                           <span class="radio-label">Pan-India (Remote/Online)</span>
-                        </label>
-                     </div>
-                  </div>
-
-                  <div class="survey-question">
-                     <h4>5. How many years of experience do you have in professional practice? <span
-                           class="required">*</span></h4>
-                     <div class="radio-group">
-                        <label class="radio-option">
-                           <input type="radio" name="experience" value="lessThan2">
-                           <span class="radio-label">Less than 2 years</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="experience" value="2to5">
-                           <span class="radio-label">2–5 years</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="experience" value="6to10">
-                           <span class="radio-label">6–10 years</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="experience" value="11to20">
-                           <span class="radio-label">11–20 years</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="experience" value="moreThan20">
-                           <span class="radio-label">More than 20 years</span>
-                        </label>
-                     </div>
-                  </div>
-
-                  <div class="survey-question">
-                     <h4>6. How many (paid) juniors/ team members directly assist you in your professional work? <span
-                           class="required">*</span></h4>
-                     <div class="radio-group">
-                        <label class="radio-option">
-                           <input type="radio" name="teamMembers" value="none">
-                           <span class="radio-label">None</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="teamMembers" value="1to2">
-                           <span class="radio-label">1-2</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="teamMembers" value="3to5">
-                           <span class="radio-label">3-5</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="teamMembers" value="6to10">
-                           <span class="radio-label">6-10</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="teamMembers" value="moreThan10">
-                           <span class="radio-label">More than 10</span>
-                        </label>
-                     </div>
-                  </div>
-
-                  <div class="survey-question">
-                     <h4>7. What percentage of your revenue goes into compensating (salary/ stipend/ fees) your juniors/
-                        team members? <span class="required">*</span></h4>
-                     <div class="radio-group">
-                        <label class="radio-option">
-                           <input type="radio" name="juniorCompensation" value="lessThan10">
-                           <span class="radio-label">Less than 10%</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="juniorCompensation" value="10to20">
-                           <span class="radio-label">10–20%</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="juniorCompensation" value="21to30">
-                           <span class="radio-label">21–30%</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="juniorCompensation" value="31to40">
-                           <span class="radio-label">31–40%</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="juniorCompensation" value="moreThan40">
-                           <span class="radio-label">More than 40%</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="juniorCompensation" value="notApplicable">
-                           <span class="radio-label">Not applicable (I work alone)</span>
-                        </label>
-                     </div>
-                  </div>
-               </div>
-
-               <div class="survey-section">
-                  <h3>Section B: Understanding Professional Challenges and Discussing Probable Solutions</h3>
-                  <div class="survey-question">
-                     <h4>8. In your opinion, what pain points do professionals like you face in their practice? (Select
-                        all that apply) <span class="required">*</span></h4>
-                     <div class="checkbox-group">
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="clientBaseRevenue">
-                           <span class="checkbox-label">Difficulty in increasing client base and revenue</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="advertisingRestrictions">
-                           <span class="checkbox-label">Restrictions on advertising</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="bigFirmCompetition">
-                           <span class="checkbox-label">Big firm competition</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="geographicalLimitation">
-                           <span class="checkbox-label">Geographical limitation</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="lowQualityLeads">
-                           <span class="checkbox-label">Low-quality leads</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="scopeAmbiguity">
-                           <span class="checkbox-label">Scope ambiguity</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="tightDeadlines">
-                           <span class="checkbox-label">Tight deadlines</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="underpricing">
-                           <span class="checkbox-label">Underpricing</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="paymentDelays">
-                           <span class="checkbox-label">Payment delays</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="clientFollowups">
-                           <span class="checkbox-label">Client follow-ups</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="templatesDrafts">
-                           <span class="checkbox-label">Non-availability of templates and drafts</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="lackOfAutomation">
-                           <span class="checkbox-label">Lack of automation for repetitive tasks</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="drafting">
-                           <span class="checkbox-label">Drafting</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="poorCollaboration">
-                           <span class="checkbox-label">Poor collaboration, Inadequate Peer Support</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="teamTaskTracking">
-                           <span class="checkbox-label">Team & Task tracking gaps</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="lackOfSOPs">
-                           <span class="checkbox-label">Lack of detailed SOPs and checklists</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="complianceTracking">
-                           <span class="checkbox-label">Compliance tracking</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="painPoints" value="otherPainPoints">
-                           <span class="checkbox-label">Other: <input type="text" name="otherPainPointsText"
-                                 class="inline-input"></span>
-                        </label>
-                     </div>
-                  </div>
-
-                  <div class="survey-question">
-                     <h4>9. What issues do you face while working with assistants/ juniors? <span
-                           class="required">*</span></h4>
-                     <div class="checkbox-group">
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="juniorIssues" value="missedDeadlines">
-                           <span class="checkbox-label">Missed deadlines</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="juniorIssues" value="poorDrafting">
-                           <span class="checkbox-label">Poor Drafting and Documentation</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="juniorIssues" value="lowAccountability">
-                           <span class="checkbox-label">Low accountability</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="juniorIssues" value="communicationGaps">
-                           <span class="checkbox-label">Communication gaps</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="juniorIssues" value="lackOfUrgency">
-                           <span class="checkbox-label">Lack of urgency</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="juniorIssues" value="taskRepetition">
-                           <span class="checkbox-label">Task repetition, time wastage</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="juniorIssues" value="knowledgeLimitations">
-                           <span class="checkbox-label">Knowledge limitations</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="juniorIssues" value="trainingEffort">
-                           <span class="checkbox-label">Training effort</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="juniorIssues" value="otherJuniorIssues">
-                           <span class="checkbox-label">Other: <input type="text" name="otherJuniorIssuesText"
-                                 class="inline-input"></span>
-                        </label>
-                     </div>
-                  </div>
-
-                  <div class="survey-question">
-                     <h4>10. On an average, what percentage of your and your teams’ total working hours is spent on the
-                        following manual activities? (Select the closest percentage range for each activity below) <span
-                           class="required">*</span></h4>
-                     <div class="manual-activities-table">
-                        <div class="table-header">
-                           <span></span>
-                           <span>0%</span>
-                           <span>1–10%</span>
-                           <span>11–20%</span>
-                           <span>More than 20%</span>
-                        </div>
-                        <div class="table-row">
-                           <span>Data Entry (forms, registers, checklists, records)</span>
-                           <label><input type="radio" name="dataEntry" value="0%"></label>
-                           <label><input type="radio" name="dataEntry" value="1-10%"></label>
-                           <label><input type="radio" name="dataEntry" value="11-20%"></label>
-                           <label><input type="radio" name="dataEntry" value=">20%"></label>
-                        </div>
-                        <div class="table-row">
-                           <span>Drafting (notices, reports, minutes, letters)</span>
-                           <label><input type="radio" name="draftingManual" value="0%"></label>
-                           <label><input type="radio" name="draftingManual" value="1-10%"></label>
-                           <label><input type="radio" name="draftingManual" value="11-20%"></label>
-                           <label><input type="radio" name="draftingManual" value=">20%"></label>
-                        </div>
-                        <div class="table-row">
-                           <span>Calculations & Computations (claims, tax, financials)</span>
-                           <label><input type="radio" name="calculations" value="0%"></label>
-                           <label><input type="radio" name="calculations" value="1-10%"></label>
-                           <label><input type="radio" name="calculations" value="11-20%"></label>
-                           <label><input type="radio" name="calculations" value=">20%"></label>
-                        </div>
-                        <div class="table-row">
-                           <span>Research (laws, judgments, compliance references)</span>
-                           <label><input type="radio" name="research" value="0%"></label>
-                           <label><input type="radio" name="research" value="1-10%"></label>
-                           <label><input type="radio" name="research" value="11-20%"></label>
-                           <label><input type="radio" name="research" value=">20%"></label>
-                        </div>
-                        <div class="table-row">
-                           <span>Reviewing & Verifying Work (checking junior’s drafts, calculations, SOP
-                              follow-ups)</span>
-                           <label><input type="radio" name="reviewingWork" value="0%"></label>
-                           <label><input type="radio" name="reviewingWork" value="1-10%"></label>
-                           <label><input type="radio" name="reviewingWork" value="11-20%"></label>
-                           <label><input type="radio" name="reviewingWork" value=">20%"></label>
-                        </div>
-                     </div>
-                  </div>
-
-                  <div class="survey-question">
-                     <h4>11. Which of the following factors are preventing you from adopting high-end, integrated IT
-                        tools in your practice? <span class="required">*</span></h4>
-                     <div class="checkbox-group">
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="itToolBarriers" value="lackOfAwareness">
-                           <span class="checkbox-label">Lack of awareness</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="itToolBarriers" value="highCost">
-                           <span class="checkbox-label">High cost</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="itToolBarriers" value="notUserFriendly">
-                           <span class="checkbox-label">Not user-friendly</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="itToolBarriers" value="incompatibility">
-                           <span class="checkbox-label">Incompatibility with team skill level</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="itToolBarriers" value="noClearROI">
-                           <span class="checkbox-label">No clear ROI visible</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="itToolBarriers" value="lackOfLocalSupport">
-                           <span class="checkbox-label">Lack of local support</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="itToolBarriers" value="fearOfDataSecurity">
-                           <span class="checkbox-label">Fear of data security</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="itToolBarriers" value="notRequiredForScale">
-                           <span class="checkbox-label">Not required for my scale</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="itToolBarriers" value="noneAbove">
-                           <span class="checkbox-label">None of the above</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="itToolBarriers" value="otherITBarriers">
-                           <span class="checkbox-label">Other: <input type="text" name="otherITBarriersText"
-                                 class="inline-input"></span>
-                        </label>
-                     </div>
-                  </div>
-               </div>
-
-               <div class="survey-section">
-                  <h3>Section C: Impact of AI on my Practice</h3>
-                  <div class="survey-intro">
-                     <p><b>Please know:</b></p>
-                     <p>With rapid adoption of AI-based tools among professionals, many of your peers and competitors
-                        are already starting to integrate AI into their day-to-day practice — using it for automation,
-                        compliance tracking, drafting, client handling, and more.</p>
-                     <p>This shift is expected to accelerate in the near future and create a new level of competition in
-                        the professional services space.</p>
-                     <p>Please share your views:</p>
-                  </div>
-                  <div class="survey-question">
-                     <h4>12. As AI tools become more common in professional practice, what challenges do you anticipate
-                        facing if your competitors begin using them and you don’t?</h4>
-                     <div class="checkbox-group">
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="aiChallenges" value="losingClients">
-                           <span class="checkbox-label">Losing clients due to faster turnaround</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="aiChallenges" value="reducedPricing">
-                           <span class="checkbox-label">Reduced pricing competitiveness</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="aiChallenges" value="difficultyManagingWorkload">
-                           <span class="checkbox-label">Difficulty managing workload manually</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="aiChallenges" value="lowerQuality">
-                           <span class="checkbox-label">Lower quality of deliverables vs AI-supported competitors</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="aiChallenges" value="pressureToUpgrade">
-                           <span class="checkbox-label">Pressure to upgrade skillsets or tools</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="aiChallenges" value="teamInefficiency">
-                           <span class="checkbox-label">Team inefficiency in comparison</span>
-                        </label>
-                        <label class="checkbox-option">
-                           <input type="checkbox" name="aiChallenges" value="otherAIChallenges">
-                           <span class="checkbox-label">Other: <input type="text" name="otherAIChallengesText"
-                                 class="inline-input"></span>
-                        </label>
-                     </div>
-                  </div>
-
-                  <div class="survey-question">
-                     <h4>13. How do you view the increasing use of AI tools in professional services? <span
-                           class="required">*</span></h4>
-                     <div class="radio-group">
-                        <label class="radio-option">
-                           <input type="radio" name="aiView" value="competitiveThreat">
-                           <span class="radio-label">A competitive threat I must prepare for</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="aiView" value="opportunityToGrow">
-                           <span class="radio-label">An opportunity to grow faster and smarter</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="aiView" value="passingTrend">
-                           <span class="radio-label">A passing trend, not a real challenge</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="aiView" value="notSure">
-                           <span class="radio-label">Not sure yet</span>
-                        </label>
-                     </div>
-                  </div>
-               </div>
-
-               <div class="survey-section">
-                  <h3>Section D: Budget Expectations for Tech-enabled Growth</h3>
-                  <div class="survey-question">
-                     <h4>14. If an AI-enabled software that significantly reduces your dependence upon juniors and
-                        assistants, charges in the range of 10% to 20% of your revenue, how likely are you to use it?
-                        <span class="required">*</span>
-                     </h4>
-                     <div class="radio-group">
-                        <label class="radio-option">
-                           <input type="radio" name="aiSoftwareLikelihood" value="willUse">
-                           <span class="radio-label">Will use</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="aiSoftwareLikelihood" value="mostLikely">
-                           <span class="radio-label">Most likely</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="aiSoftwareLikelihood" value="likely">
-                           <span class="radio-label">Likely</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="aiSoftwareLikelihood" value="willNotUse">
-                           <span class="radio-label">Will not use</span>
-                        </label>
-                     </div>
-                  </div>
-
-                  <div class="survey-question">
-                     <h4>15. If a platform offers you verified client opportunities against a 10% referral fee, how
-                        likely are you to accept the offer? <span class="required">*</span></h4>
-                     <div class="radio-group">
-                        <label class="radio-option">
-                           <input type="radio" name="referralFeeLikelihood" value="willAccept">
-                           <span class="radio-label">Will accept</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="referralFeeLikelihood" value="mostLikely">
-                           <span class="radio-label">Most likely</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="referralFeeLikelihood" value="likely">
-                           <span class="radio-label">Likely</span>
-                        </label>
-                        <label class="radio-option">
-                           <input type="radio" name="referralFeeLikelihood" value="willNotAccept">
-                           <span class="radio-label">Will not accept</span>
-                        </label>
-                     </div>
-                  </div>
-               </div>
-
-               <div class="survey-actions">
-                  <button class="action-btn submit-btn" onclick="submitSurvey()">Submit Survey</button>
-                  <button class="action-btn secondary-btn" onclick="resetSurvey()">Reset Form</button>
-               </div>
-
-               <div class="survey-progress">
-                  <div class="progress-bar">
-                     <div class="progress-fill" id="progressBar"></div>
-                  </div>
-                  <span class="progress-text" id="progressText">0% Complete</span>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+   {% include 'survey.html' %}
 
 
    <!-- HEADER -->
@@ -651,15 +67,23 @@
             </a>
          </div>
          <div class="bd-services-2__item-btn">
-            <p class="link-btn-2 text-end custom-header-text">
-               “The future of AI is not about replacing humans, it's about augmenting human capabilities.”
+            <p class="link-btn-2 text-end custom-header-text first-quota quota">
+               “The future of AI is not about replacing humans, it's about augmenting human capabilities.”<br>
+               <span class="quota-speaker">Sundar Pichai, CEO of Google</span>
+
+            </p>
+         </div>
+         <div class="bd-services-2__item-btn second-quota" style="display: none;">
+            <p class="link-btn-2 text-end custom-header-text quota2">
+               “AI will not replace humans, but those<br> who use AI will replace those who don't.”<br>
+               <span class="quota-speaker">Ginni Rometty, Former CEO of IBM </span>
             </p>
          </div>
 
          <!-- Desktop Nav -->
          <nav class="desktop-nav">
             <ul>
-               <li><a class="header-button hero-btn" href="/register">Login</a></li>
+               <li><a class="header-button hero-btn" href="/login">Login</a></li>
                <li><a class="header-button hero-btn" href="/register">Register</a></li>
                <li class="social-menu">
                   <a class="header-button hero-btn" href="#">Follow Us</a>
@@ -668,7 +92,7 @@
                         <i class="fab fa-facebook-f"></i>
                      </a>
                      <a class="social-options1" href="#">
-                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
                      </a>
                      <a class="social-options1" href="#">
                         <i class="fab fa-youtube"></i>
@@ -701,47 +125,50 @@
          <li><a href="/">Home</a></li>
 
          <li class="panel-has-submenu">
-            <a href="/about">About<span class="panel-arrow">&#9656;</span></a>
+            <div class="panel-link-wrapper" style="padding: 12px 18px;">
+               <a href="/about-us">About Us</a>
+               <span class="panel-arrow-btn">&#9656;</span>
+            </div>
             <ul class="panel-submenu">
-               <li><a href="/about#mission-&-vision">Mission & Vision</a></li>
-               <li><a href="/about#our-story">Our Story</a></li>
-               <li><a href="/about#principles-&-ethics">Principles & Ethics</a></li>
-               <li><a href="/about#workspace-culture">Workspace Culture</a></li>
-               <li><a href="/about#team-&-leadership">Team & Leadership</a></li>
+               <li><a href="/about-us#mission-&-vision">Mission & Vision</a></li>
+               <li><a href="/about-us#our-story">Our Story</a></li>
+               <li><a href="/about-us#principles-&-ethics">Principles & Ethics</a></li>
+               <li><a href="/about-us#workspace-culture">Workspace Culture</a></li>
+               <li><a href="/about-us#team-&-leadership">Team & Leadership</a></li>
             </ul>
          </li>
 
          <li class="panel-has-submenu">
-            <a href="/products-and-services">Products and Services <span class="panel-arrow">&#9656;</span></a>
+            <div class="panel-link-wrapper" style="padding: 12px 18px;">
+               <a href="/products-and-services">Products and Services </a>
+               <span class="panel-arrow-btn">&#9656;</span>
+            </div>
             <ul class="panel-submenu">
                <li><a href="/products-and-services#what-we-offer">What We Offer</a></li>
                <li><a href="/products-and-services#key-features">Key Features</a></li>
+               <li><a href="/products-and-services#franchise-or-facilitator-model">Franchise/Facilitator Model</a></li>
                <li><a href="/products-and-services#whom-we-serve">Whom We Serve</a></li>
                <li><a href="/products-and-services#plan-&-pricing">Plans & Pricing</a></li>
             </ul>
          </li>
 
          <li class="panel-has-submenu">
-            <a href="/professionals">Professionals<span class="panel-arrow">&#9656;</span></a>
+            <div class="panel-link-wrapper" style="padding: 12px 18px;">
+               <a href="/professionals">Professionals</a>
+               <span class="panel-arrow-btn">&#9656;</span>
+            </div>
             <ul class="panel-submenu">
                <li><a href="/professionals">FAQs</a></li>
             </ul>
          </li>
 
-         <li class="panel-has-submenu">
-            <a href="/contact">Contact <span class="panel-arrow">&#9656;</span></a>
-            <ul class="panel-submenu">
-               <li><a href="/contact">Support</a></li>
-               <li><a href="/contact">Helpdesk</a></li>
-               <li><a href="/contact">Guides / Demos</a></li>
-               <li><a href="/contact">Request Offline Demos</a></li>
-            </ul>
-         </li>
-         <li><a href="/register">Login</a></li>
+         <li><a href="/contact-us">Contact Us</a></li>
+
+         <li><a href="/login">Login</a></li>
          <li><a href="/register">Register</a></li>
          <div class="bd-footer-widget__social text-center">
             <span><a href="#"><i class="fab fa-facebook-f"></i></a></span>
-            <span><a href="#"><i class="fab fa-twitter"></i></a></span>
+            <span><a href="#"><i class="fab fa-instagram"></i></a></span>
             <span><a href="#"><i class="fab fa-youtube"></i></a></span>
             <span><a href="#"><i class="fab fa-linkedin"></i></a></span>
          </div>
@@ -755,38 +182,39 @@
    <div class="floating-menu">
       <ul>
          <li class="has-submenu">
-            <a href="/" title="Home">
+            <a href="/">
                <i style="margin-left: 18px;" class="fas fa-house"></i>
                <span>Home</span>
             </a>
          </li>
          <li class="has-submenu">
-            <a href="/about" title="About Us">
+            <a href="/about-us">
                <i class="fas fa-circle-info"></i>
-               <span>About</span>
+               <span>About Us</span>
             </a>
             <ul class="submenu">
-               <li><a href="/about#mission-&-vision">Mission & Vision</a></li>
-               <li><a href="/about#our-story">Our Story</a></li>
-               <li><a href="/about#principles-&-ethics">Principles & Ethics</a></li>
-               <li><a href="/about#workspace-culture">Workspace Culture</a></li>
-               <li><a href="/about#team-&-leadership">Team & Leadership</a></li>
+               <li><a href="/about-us#mission-&-vision">Mission & Vision</a></li>
+               <li><a href="/about-us#our-story">Our Story</a></li>
+               <li><a href="/about-us#principles-&-ethics">Principles & Ethics</a></li>
+               <li><a href="/about-us#workspace-culture">Workspace Culture</a></li>
+               <li><a href="/about-us#team-&-leadership">Team & Leadership</a></li>
             </ul>
          </li>
          <li class="has-submenu">
-            <a href="/products-and-services" title="Products">
+            <a href="/products-and-services">
                <i class="fas fa-briefcase"></i>
                <span>Products and Services</span>
             </a>
             <ul class="submenu">
                <li><a href="/products-and-services#what-we-offer">What We Offer</a></li>
                <li><a href="/products-and-services#key-features">Key Features</a></li>
+               <li><a href="/products-and-services#franchise-or-facilitator-model">Franchise / Facilitator Model</a></li>
                <li><a href="/products-and-services#whom-we-serve">Whom We Serve</a></li>
                <li><a href="/products-and-services#plan-&-pricing">Plans & Pricing</a></li>
             </ul>
          </li>
          <li class="has-submenu">
-            <a href="/professionals" title="Professionals">
+            <a href="/professionals">
                <i class="fas fa-user-group"></i>
                <span>Professionals</span>
             </a>
@@ -795,16 +223,10 @@
             </ul>
          </li>
          <li class="has-submenu">
-            <a href="/contact" title="Contact">
+            <a href="/contact-us">
                <i class="fas fa-comment-dots"></i>
-               <span>Contact</span>
+               <span>Contact Us</span>
             </a>
-            <ul class="submenu">
-               <li><a href="/contact">Support</a></li>
-               <li><a href="/contact">Helpdesk</a></li>
-               <li><a href="/contact">Guides / Demos</a></li>
-               <li><a href="/contact">Request Offline Demos</a></li>
-            </ul>
          </li>
 
       </ul>
@@ -813,7 +235,15 @@
    <!-- header area end -->
 
    <main>
-
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <ul class="flashes">
+          {% for category, message in messages %}
+              <li class="alert alert-{{ category }}">{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
       {% block content %} {% endblock %}
 
    </main>
@@ -833,18 +263,19 @@
                         </div>
                         <div class="bd-footer-widget__content">
                            <p>
-                              998P is a smart, AI-powered platform built to help professionals manage their work,
+                              998-P is a smart, AI-powered platform built to help professionals manage their work,
                               collaborate with others, and grow their practice.
                            </p>
                            <div class="bd-footer-widget__form">
-                              <form>
-                                 <input type="email" placeholder="Your email here">
-                                 <button>Subscribe</button>
+                              <form id="subscribe-form" action="{{ url_for('subscribe') }}" method="POST">
+                                 <input type="email" placeholder="Your email here" name="email" required>
+                                 <button type="submit">Subscribe</button>
                               </form>
                            </div>
+                           <div id="subscribe-message"></div>
                            <div class="bd-footer-widget__social">
                               <span><a href="#"><i class="fab fa-facebook-f"></i></a></span>
-                              <span><a href="#"><i class="fab fa-twitter"></i></a></span>
+                              <span><a href="#"><i class="fab fa-instagram"></i></a></span>
                               <span><a href="#"><i class="fab fa-youtube"></i></a></span>
                               <span><a href="#"><i class="fab fa-linkedin"></i></a></span>
                            </div>
@@ -863,14 +294,14 @@
                            <div class="bd-footer-widget__menu">
                               <ul>
                                  <li><a href="/">Home</a></li>
-                                 <li><a href="/about#mission-&-vision">Mission & Vision</a></li>
-                                 <li><a href="/about">About</a></li>
-                                 <li><a href="/about#our-story">Our Story</a></li>
+                                 <li><a href="/about-us#mission-&-vision">Mission & Vision</a></li>
+                                 <li><a href="/about-us">About</a></li>
+                                 <li><a href="/about-us#our-story">Our Story</a></li>
                                  <li><a href="/products-and-services">Products and Services</a></li>
                                  <li><a href="/products-and-services#plan-&-pricing">Plans & Pricing</a></li>
                                  <li><a href="/professionals">Professionals</a></li>
                                  <li><a href="/professionals#faqs">FAQs</a></li>
-                                 <li><a href="/contact">Contact</a></li>
+                                 <li><a href="/contact-us">Contact Us</a></li>
 
                               </ul>
                            </div>
@@ -908,32 +339,17 @@
    <script src="static/js/ajax-form.js"></script>
    <script src="static/js/main.js"></script>
    <script src="static/js/custom.js"></script>
-   <script src="static/js/faq-toggle.js"></script>
+
+   {% block scripts %}
+   {% endblock %}
+
    <script>
       var heroSwiper = new Swiper(".hero-swiper", {
-         loop: true,
-         pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-         },
-         navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-         },
-         autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-         },
-         effect: "fade"
-      });
-   </script>
-
-   <script> var heroSwiper = new Swiper(".hero-swiper", {
          loop: true,
          effect: "fade", // fade effect 
          fadeEffect: { crossFade: true },
          autoplay: {
-            delay: 5000,
+            delay: 10000,
             disableOnInteraction: false,
          },
          pagination: {
@@ -988,10 +404,10 @@
       });
 
       // Accordion-style submenu toggle
-      document.querySelectorAll(".panel-has-submenu > a").forEach(link => {
-         link.addEventListener("click", (e) => {
+      document.querySelectorAll(".panel-arrow-btn").forEach(arrowBtn => {
+         arrowBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            const parent = link.parentElement;
+            const parent = arrowBtn.closest(".panel-has-submenu");
             const submenu = parent.querySelector(".panel-submenu");
             const isOpen = parent.classList.contains("active");
 
@@ -1009,15 +425,7 @@
             }
          });
       });
-
-
-
-
-
    </script>
-
-
-
 
    <script>
       let isDragging = false, hasMoved = false;
@@ -1301,26 +709,6 @@
          if (isDragging) e.preventDefault();
       });
 
-      // Initialize progress tracking and slider value display
-      document.addEventListener('DOMContentLoaded', () => {
-         // Add event listeners for progress tracking
-         const inputs = document.querySelectorAll('.survey-container input, .survey-container select, .survey-container textarea');
-         inputs.forEach(input => {
-            input.addEventListener('change', updateProgress);
-            input.addEventListener('input', updateProgress);
-         });
-
-         // Slider value display
-         const slider = document.querySelector('.survey-slider');
-         const sliderValue = document.getElementById('slider-value');
-         if (slider && sliderValue) {
-            slider.addEventListener('input', (e) => {
-               sliderValue.textContent = e.target.value;
-            });
-         }
-
-         updateProgress();
-      });
       window.addEventListener('resize', () => {
          if (bubble.classList.contains('bubble-maximized')) {
             const rect = bubble.getBoundingClientRect();
@@ -1340,9 +728,59 @@
       });
    </script>
 
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+         const subscribeForm = document.getElementById('subscribe-form');
+         const subscribeMessage = document.getElementById('subscribe-message');
 
+         if (subscribeForm) {
+            subscribeForm.addEventListener('submit', async function(event) {
+               event.preventDefault();
 
+               const formData = new FormData(subscribeForm);
+               const email = formData.get('email');
 
+               try {
+                  const response = await fetch(subscribeForm.action, {
+                     method: 'POST',
+                     body: formData,
+                  });
+
+                  const result = await response.json();
+
+                  subscribeMessage.innerHTML = `<div class="alert alert-${result.status}">${result.message}</div>`;
+                  if (result.status === "success") {
+                     subscribeForm.reset();
+                  }
+
+                  // Automatically clear the message after 10 seconds
+                  setTimeout(() => {
+                     subscribeMessage.innerHTML = '';
+                  }, 10000); // 10000 milliseconds = 10 seconds
+               } catch (error) {
+                  subscribeMessage.innerHTML = `<div class="alert alert-danger">An unexpected error occurred. Please try again.</div>`;
+                  console.error('Error:', error);
+               }
+            });
+         }
+      });
+   </script>
+
+   <!-- Pop-up Alert HTML -->
+   <div id="bd-popup-alert" class="bd-popup-container">
+       <div class="bd-popup-header">
+           <h3 class="bd-popup-title" id="bd-popup-title">Alert</h3>
+           <button type="button" class="bd-popup-close"><i class="fal fa-times"></i></button>
+       </div>
+       <div class="bd-popup-body">
+           <p id="bd-popup-message"></p>
+       </div>
+       <div class="bd-popup-actions">
+           <button type="button" class="bd-popup-btn">OK</button>
+       </div>
+   </div>
+   <!-- Pop-up Overlay HTML -->
+   <div id="bd-popup-overlay" class="bd-popup-overlay"></div>
 </body>
 
 </html>

@@ -587,6 +587,20 @@
   }
 }
 
+.quota {
+  padding-top: 15px;
+  padding-left: 20%;
+}
+
+.quota-speaker {
+  color: #000;
+  text-transform: none;
+  letter-spacing: normal;
+  font-style: italic;
+  font-weight: normal;
+}
+
+
 /* Buttons after scroll */
 .scrolled .desktop-nav ul li a {
   background: #fff;
@@ -594,8 +608,22 @@
   transition: all 0.4s ease;
 }
 
-.scrolled .custom-header-text{
+.scrolled .quota-speaker{
+  color: #fff;
+}
+
+.scrolled .quota2{
+  padding-top: 15px;
+  line-height: normal;
+  color: #fff;
+}
+
+.scrolled .first-quota{
   display: none;
+}
+
+.scrolled .second-quota{
+  display: block !important; 
 }
 
 .scrolled .desktop-nav ul li a:hover {
@@ -907,7 +935,12 @@
   text-transform: uppercase;
   color: var(--bd-theme-primary);
   letter-spacing: 2px;
-  padding-left: 15px;
+}
+
+.faq-no {
+  padding: 3px 5px;
+  background-color: var(--bd-theme-primary);
+  color: #fff;
 }
 
 .triangle-header {
@@ -1057,9 +1090,17 @@
 
 /* Maximized State */
 .bubble-maximized .bubble-content {
-  width: 1200px;
+  width: 900px;
   height: 700px;
   border-radius: 20px;
+}
+
+@media (max-width: 992px) {
+  .bubble-maximized .bubble-content {
+    width: 700px;
+    height: 700px;
+    border-radius: 20px;
+  }
 }
 
 .bubble-maximized .bubble-icon {
@@ -1969,7 +2010,7 @@
     margin-bottom: 20px;
     border: none;
     background-color: transparent;
-    padding: 5px 15px;
+    padding: 15px;
     border-radius: 5px;
     border: solid 1px var(--bd-theme-primary);
 }
@@ -1978,11 +2019,10 @@
     width: 100%;
     background-color: transparent;
     color: var(--bd-theme-primary);
-    padding: 15px 0;
     border: none;
     text-align: left;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
     transition: all 0.3s ease;
     display: flex;
@@ -2015,7 +2055,7 @@
 }
 
 .faq-content.show {
-    max-height: 500px; /* Adjust as needed */
+    max-height: 2000px; /* Adjust as needed */
     transition: max-height 0.5s ease-in;
 }
 
@@ -2177,8 +2217,10 @@
 }
 
 .survey-input.inline-input {
-    width: auto;
+    width: 200px;
+    height: 30px;
     display: inline-block;
+    background-color: #fff;
     margin-left: 6px;
     /* Adjusted margin */
     padding: 5px 9px;
@@ -2254,6 +2296,13 @@
 
 .manual-activities-table .table-row:last-child {
     border-bottom: none;
+}
+
+@media (min-width: 992px) {
+  .checkbox-group,
+  .radio-group {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 992px) {
@@ -2601,4 +2650,251 @@
   .responsive-professionals {
     font-size: 4rem;
   }
+}
+
+.two-column-text {
+  column-count: 2;
+  column-gap: 80px; /* Adjust as needed */
+  text-align: justify;
+}
+
+.two-column-text p {
+  margin-bottom: 1em; /* Adjust as needed for desired spacing */
+  margin-top: 20px; /* Added margin-top for paragraphs */
+}
+
+@media (max-width: 768px) {
+  .two-column-text {
+    column-count: 1;
+  }
+}
+
+.custom-note {
+  font-size: small !important;
+  line-height: normal !important;
+  font-weight: normal !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+/* Password Toggle Input */
+.postbox__comment-input.password-input {
+  position: relative;
+}
+
+.postbox__comment-input.password-input input {
+  padding-right: 40px; /* Make space for the icon */
+}
+
+.postbox__comment-input.password-input .toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+  font-size: 18px;
+  z-index: 2;
+}
+
+.custom-color {
+  color: var(--bd-theme-primary);
+}
+
+/* Temporary styles for .bd-team-3__pagination */
+.bd-team-3__pagination {
+  position: relative !important;
+  bottom: -40px !important; /* Adjust as needed to move it below the slider */
+  left: 0 !important;
+  width: 100% !important;
+  text-align: center !important;
+  background-color: rgba(255, 0, 0, 0.5) !important; /* Bright background to make it obvious */
+  height: 20px !important; /* Ensure it has height */
+  z-index: 9999 !important; /* Ensure it's on top */
+  display: block !important; /* Ensure it's not hidden by display: none */
+}
+
+.bd-team-3__pagination .swiper-pagination-bullet {
+  background: blue !important; /* Bright color for bullets */
+  opacity: 1 !important;
+  width: 12px !important;
+  height: 12px !important;
+  margin: 0 5px !important;
+}
+
+.bd-team-3__pagination .swiper-pagination-bullet-active {
+  background: yellow !important; /* Distinct color for active bullet */
+}
+
+/* Pop-up Alert Styles */
+.bd-popup-container {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    z-index: 10000; /* Higher than preloader */
+    background-color: var(--bd-common-white);
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 450px; /* Slightly smaller max-width */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.bd-popup-container.show {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.bd-popup-header {
+    background-color: var(--bd-theme-primary);
+    color: var(--bd-common-white);
+    padding: 15px 25px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bd-popup-header.success {
+    background-color: var(--bd-theme-primary); /* Green for success */
+}
+
+.bd-popup-header.error {
+    background-color: var(--bd-theme-primary); /* Red for error */
+}
+
+.bd-popup-title {
+    font-size: 20px;
+    font-weight: 700; /* Slightly bolder */
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
+.bd-popup-title i {
+    margin-right: 10px;
+    font-size: 22px;
+}
+
+.bd-popup-close {
+    background: none;
+    border: none;
+    color: var(--bd-common-white);
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.bd-popup-close:hover {
+    transform: rotate(90deg) scale(1.1);
+}
+
+.bd-popup-body {
+    padding: 25px;
+    color: var(--bd-text-body-custom);
+    line-height: 1.7; /* Increased line height for readability */
+    text-align: center; /* Center align text */
+}
+
+.bd-popup-body p {
+    margin-bottom: 0; /* Remove default paragraph margin */
+    font-size: 16px;
+}
+
+.bd-popup-actions {
+    padding: 15px 25px 25px;
+    text-align: center; /* Center align buttons */
+}
+
+.bd-popup-btn {
+    background-color: var(--bd-theme-primary);
+    color: var(--bd-common-white);
+    border: none;
+    padding: 12px 25px; /* Larger padding */
+    border-radius: 8px; /* More rounded */
+    cursor: pointer;
+    font-size: 15px; /* Slightly larger font */
+    font-weight: 600; /* Bolder font */
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bd-popup-btn:hover {
+    background-color: var(--bd-theme-primary);
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Pop-up Overlay for blur effect */
+.bd-popup-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent black */
+    backdrop-filter: blur(5px); /* Blur effect */
+    z-index: 9999; /* Just below the pop-up */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.bd-popup-overlay.show {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.survey-input1 {
+  width: 100%;
+  padding: 10px 12px;
+  /* Adjusted padding */
+  border: 1px solid #e2e8f0;
+  /* Simpler border */
+  border-radius: 8px;
+  /* Less rounded */
+  font-size: 13px;
+  font-weight: 500;
+  background: #f8fafc;
+  /* Lighter background */
+  color: #475569;
+  /* Softer text color */
+  transition: all 0.2s ease;
+}
+
+.survey-input1:focus {
+  outline: none;
+  border-color: #cbd5e0;
+  /* Lighter focus border */
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+  /* Subtle focus shadow */
+  background: #ffffff;
+}
+
+.survey-input1::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.survey-input1.inline-input1 {
+  display: inline-block;
+  background-color: #fff;
+  margin-top: 5px;
+  padding: 5px 9px;
+  border-radius: 6px;
+  font-size: 11px;
 }

@@ -7,54 +7,69 @@
        <div class="row justify-content-center">
           <div class="col-lg-8">
              <div class="postbox__comment-form mb-30">
-                <h3 class="postbox__comment-form-title text-center">Register</h3>
-                <form action="#">
+                <div class="bd-section__title-wrapper text-center mb-50 wow fadeInUp">
+                   <h3 class="bd-section__title bd-title-border mb-30">Register</h3>
+                   <span class="bd-section__subtitle custom-note">Permanent registration is currently suspended. Please fill the survey form to get a temporary registration number, which can be used for claiming WIN-Voucher and Referral credits.</span>
+                </div>
+                <form id="register-form" action="/register" method="POST">
                    <div class="row">
                       <div class="col-xxl-6 col-xl-6 col-lg-6">
                          <div class="postbox__comment-input">
-                            <input type="text" placeholder="Your Name">
+                            <input type="text" placeholder="Your Name" name="name" required>
+                           </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-6">
+                           <div class="postbox__comment-input">
+                              <input type="email" placeholder="Your Email" name="email" required>
+                           </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-6">
+                           <div class="postbox__comment-input">
+                              <input type="tel" placeholder="Mobile Number" name="mobile" pattern="\d{10}" maxlength="10" required>
+                           </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-6">
+                           <div class="postbox__comment-input">
+                              <select class="nice-select" name="profession" required>
+                                 <option value="" disabled selected>Profession</option>
+                                 <option value="CA">CA</option>
+                                 <option value="CS">CS</option>
+                                 <option value="Lawyer">Lawyer</option>
+                                 <option value="IP">IP</option>
+                                 <option value="CMA">CMA</option>
+                                 <option value="Valuer">Valuer</option>
+                              </select>
+                           </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-6">
+                           <div class="postbox__comment-input">
+                              <input type="text" placeholder="Registration / Membership /Licence no." name="registration_no" required>
+                           </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-6">
+                           <div class="postbox__comment-input">
+                              <input type="text" placeholder="Location" name="location" required>
+                           </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-6">
+                           <div class="postbox__comment-input password-input">
+                              <input type="password" placeholder="Password" name="password" required>
+                              <i class="fa-regular fa-eye-slash toggle-password" id="togglePasswordRegister"></i>
+                           </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-6">
+                           <div class="postbox__comment-input password-input">
+                              <input type="password" placeholder="Confirm Password" name="confirm_password" required>
+                              <i class="fa-regular fa-eye-slash toggle-password" id="toggleConfirmPasswordRegister"></i>
+                           </div>
+                        </div>
+                        <div class="col-xxl-12 text-center">
+                           <div id="register-message" class="mt-2"></div>
+                           <div class="postbox__comment-btn">
+                              <button type="submit" class="bd-btn" style="padding: 12px 35px;">Register Now</button>
                          </div>
-                      </div>
-                      <div class="col-xxl-6 col-xl-6 col-lg-6">
-                         <div class="postbox__comment-input">
-                            <input type="email" placeholder="Your Email">
-                         </div>
-                      </div>
-                      <div class="col-xxl-6 col-xl-6 col-lg-6">
-                         <div class="postbox__comment-input">
-                            <input type="text" placeholder="Mobile Number">
-                         </div>
-                      </div>
-                      <div class="col-xxl-6 col-xl-6 col-lg-6">
-                         <div class="postbox__comment-input">
-                            <div class="nice-select" tabindex="0">
-                                <span class="current">Profession</span>
-                                <ul class="list">
-                                    <li data-value="CA" class="option selected focus">CA</li>
-                                    <li data-value="CS" class="option">CS</li>
-                                    <li data-value="Lawyer" class="option">Lawyer</li>
-                                    <li data-value="IP" class="option">IP</li>
-                                </ul>
-                            </div>
-                         </div>
-                      </div>
-                      <div class="col-xxl-12">
-                         <div class="postbox__comment-input">
-                            <div class="nice-select" tabindex="0">
-                                <span class="current">Firm Size</span>
-                                <ul class="list">
-                                    <li data-value="1-10" class="option selected focus">1-10</li>
-                                    <li data-value="10-50" class="option">10-50</li>
-                                    <li data-value="50-200" class="option">50-200</li>
-                                    <li data-value="200-1000" class="option">200-1000</li>
-                                    <li data-value="1000+" class="option">1000+</li>
-                                </ul>
-                            </div>
-                         </div>
-                      </div>
-                      <div class="col-xxl-12 text-center">
-                         <div class="postbox__comment-btn">
-                            <button type="submit" class="bd-btn">Register Now</button>
+                         <div class="mt-3">
+                            <p>Already have an account? <a href="/login" class="custom-color">Login here</a></p>
                          </div>
                       </div>
                    </div>
@@ -66,4 +81,50 @@
  </div>
 
 
+{% endblock %}
+
+{% block scripts %}
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+      const registerForm = document.getElementById('register-form');
+      const registerMessage = document.getElementById('register-message');
+
+      if (registerForm) {
+         registerForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(registerForm);
+
+            try {
+               const response = await fetch(registerForm.action, {
+                  method: 'POST',
+                  body: formData,
+               });
+
+               const result = await response.json();
+
+               registerMessage.innerHTML = `<div class="alert alert-${result.status}">${result.message}</div>`;
+               if (result.redirect) {
+                  setTimeout(() => {
+                     window.location.href = result.redirect;
+                  }, 1000); // Redirect after 1 second to show message briefly
+               } else {
+                  setTimeout(() => {
+                     registerMessage.innerHTML = '';
+                  }, 10000); // Clear message after 10 seconds
+               }
+               if (result.status === "success") {
+                  registerForm.reset();
+               }
+            } catch (error) {
+               registerMessage.innerHTML = `<div class="alert alert-danger">An unexpected error occurred. Please try again.</div>`;
+               console.error('Error:', error);
+               setTimeout(() => {
+                  registerMessage.innerHTML = '';
+               }, 10000); // Clear error message after 10 seconds
+            }
+         });
+      }
+   });
+</script>
 {% endblock %}

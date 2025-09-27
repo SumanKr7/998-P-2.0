@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="breadcrumb__section bd-contact__section pt-120 pb-90">
+    <div class="container">
+       <div class="row justify-content-center">
+          <div class="col-lg-8">
+             <div class="postbox__comment-form mb-30">
+                <div class="bd-section__title-wrapper text-center mb-50 wow fadeInUp">
+                   <h3 class="bd-section__title bd-title-border mb-30">Login</h3>
+                   <span class="bd-section__subtitle custom-note">Please login to your account.</span>
+                </div>
+                <form id="login-form" action="/login" method="POST">
+                   <div class="row">
+                        <div class="col-xxl-12">
+                           <div class="postbox__comment-input">
+                              <input type="email" placeholder="Your Email" name="email" required>
+                           </div>
+                        </div>
+                        <div class="col-xxl-12">
+                           <div class="postbox__comment-input password-input">
+                              <input type="password" placeholder="Your Password" name="password" required>
+                              <i class="fa-regular fa-eye-slash toggle-password" id="togglePassword"></i>
+                           </div>
+                        </div>
+                        <div class="col-xxl-12 text-center">
+                           <div id="login-message" class="mt-2"></div>
+                           <div class="postbox__comment-btn">
+                              <button type="submit" class="bd-btn" style="padding: 12px 35px;">Login Now</button>
+                         </div>
+                         <div class="mt-3">
+                            <p>Don't have an account? <a href="/register" class="custom-color">Register here</a></p>
+                         </div>
+                      </div>
+                   </div>
+                </form>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+      const loginForm = document.getElementById('login-form');
+      const loginMessage = document.getElementById('login-message');
+
+      if (loginForm) {
+         loginForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(loginForm);
+
+            try {
+               const response = await fetch(loginForm.action, {
+                  method: 'POST',
+                  body: formData,
+               });
+
+               const result = await response.json();
+
+               loginMessage.innerHTML = `<div class="alert alert-${result.status}">${result.message}</div>`;
+               if (result.redirect) {
+                  setTimeout(() => {
+                     window.location.href = result.redirect;
+                  }, 1000); // Redirect after 1 second to show message briefly
+               } else {
+                  setTimeout(() => {
+                     loginMessage.innerHTML = '';
+                  }, 10000); // Clear message after 10 seconds
+               }
+            } catch (error) {
+               loginMessage.innerHTML = `<div class="alert alert-danger">An unexpected error occurred. Please try again.</div>`;
+               console.error('Error:', error);
+               setTimeout(() => {
+                  loginMessage.innerHTML = '';
+               }, 10000); // Clear error message after 10 seconds
+            }
+         });
+      }
+   });
+</script>
+{% endblock %}

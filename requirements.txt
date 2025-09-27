@@ -1,4 +1,6 @@
-fastapi
+flask
 uvicorn
 gunicorn
 jinja2
+python-dotenv
+Werkzeug

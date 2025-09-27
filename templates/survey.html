@@ -1,0 +1,732 @@
+<div class="floating-bubble {{ 'bubble-maximized' if current_path == '/' else 'bubble-minimized' }}"
+   id="floatingBubble">
+   <div class="bubble-content">
+      <!-- Minimized view -->
+      <div class="bubble-icon">Survey</div>
+
+      <!-- Maximized view -->
+      <div class="bubble-header">
+         <div class="bubble-title">Survey</div>
+         <button class="minimize-btn" onclick="minimizeBubble()">−</button>
+      </div>
+      <div class="bubble-body">
+         {% with messages = get_flashed_messages(with_categories=true) %}
+         {% if messages %}
+         <div class="flash-messages">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+         </div>
+         {% endif %}
+         {% endwith %}
+         <form id="surveyForm" action="{{ url_for('submit_survey') }}" method="POST">
+            <div class="survey-container">
+               <!-- Survey Questions -->
+               <div class="survey-intro">
+                  <p>As a gesture of appreciation for your valuable inputs, professionals who complete this survey with
+                     fair and thoughtful estimations will be eligible to receive a FREE 1-year subscription to any one
+                     of our upcoming ERP systems - Drive (IP:) / Drive (CA:) / Drive (CS:) / Drive (Lawyer:) / Drive
+                     (CMA:) / Drive (Valuer:) - specially designed for you!
+                  </p>
+                  <p>Please complete survay to receive your Win-Voucher* upon verification.</p>
+                  <p class="small-text">*Cross-verification of your identity and profession may be undertaken before
+                     issuing the Win-Voucher.</p>
+               </div>
+
+               
+
+               <div class="survey-section">
+                  <h3>Your Details</h3>
+                  <div class="survey-question">
+                     <h4>Your Full Name: <span class="required">*</span></h4>
+                     <input type="text" class="survey-input1" name="fullName">
+                  </div>
+                  <div class="survey-question">
+                     <h4>Mobile Number: <span class="required">*</span></h4>
+                     <input type="tel" class="survey-input1" name="mobileNumber">
+                  </div>
+                  <div class="survey-question">
+                     <h4>Email Id: <span class="required">*</span></h4>
+                     <input type="email" class="survey-input1" name="emailId">
+                  </div>
+                  <div class="survey-question">
+                     <h4>Location: <span class="required">*</span></h4>
+                     <input type="text" class="survey-input1" name="location">
+                  </div>
+               </div>
+
+               <div class="survey-section">
+                  <h3>Section A: About You</h3>
+                  <div class="survey-question">
+                     <h4>1. You are a Practicing: (Select all that apply) <span class="required">*</span></h4>
+                     <div class="checkbox-group two-column-group">
+                        <div class="checkbox-item">
+                           <label class="checkbox-option">
+                              <input type="checkbox" name="practicingAs" value="CA" id="practicingAsCA">
+                              <span class="checkbox-label">CA</span>
+                           </label>
+                           <input type="text" name="caLicense" class="inline-input1 survey-input1 license-input" placeholder="CA License No." disabled>
+                        </div>
+                        <div class="checkbox-item">
+                           <label class="checkbox-option">
+                              <input type="checkbox" name="practicingAs" value="CS" id="practicingAsCS">
+                              <span class="checkbox-label">CS</span>
+                           </label>
+                           <input type="text" name="csLicense" class="inline-input1 survey-input1 license-input" placeholder="CS License No." disabled>
+                        </div>
+                        <div class="checkbox-item">
+                           <label class="checkbox-option">
+                              <input type="checkbox" name="practicingAs" value="Lawyer" id="practicingAsLawyer">
+                              <span class="checkbox-label">Lawyer</span>
+                           </label>
+                           <input type="text" name="lawyerLicense" class="inline-input1 survey-input1 license-input" placeholder="Lawyer License No." disabled>
+                        </div>
+                        <div class="checkbox-item">
+                           <label class="checkbox-option">
+                              <input type="checkbox" name="practicingAs" value="IP" id="practicingAsIP">
+                              <span class="checkbox-label">IP</span>
+                           </label>
+                           <input type="text" name="ipLicense" class="inline-input1 survey-input1 license-input" placeholder="IP License No." disabled>
+                        </div>
+                        <div class="checkbox-item">
+                           <label class="checkbox-option">
+                              <input type="checkbox" name="practicingAs" value="CMA" id="practicingAsCMA">
+                              <span class="checkbox-label">CMA</span>
+                           </label>
+                           <input type="text" name="cmaLicense" class="inline-input1 survey-input1 license-input" placeholder="CMA License No." disabled>
+                        </div>
+                        <div class="checkbox-item">
+                           <label class="checkbox-option">
+                              <input type="checkbox" name="practicingAs" value="Valuer" id="practicingAsValuer">
+                              <span class="checkbox-label">Valuer</span>
+                           </label>
+                           <input type="text" name="valuerLicense" class="inline-input1 survey-input1 license-input" placeholder="Valuer License No." disabled>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="survey-question">
+                     <h4>2. How do you operate? <span class="required">*</span></h4>
+                     <div class="radio-group">
+                        <label class="radio-option">
+                           <input type="radio" name="howOperate" value="individual">
+                           <span class="radio-label">Individual practice</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="howOperate" value="partnership">
+                           <span class="radio-label">Partnership / LLP / Firm</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="howOperate" value="teamBased">
+                           <span class="radio-label">Team-based model</span>
+                        </label>
+                     </div>
+                  </div>
+
+                  <div class="survey-question">
+                     <h4>3. Your annual professional income (in ₹): <span class="required">*</span></h4>
+                     <div class="radio-group">
+                        <label class="radio-option">
+                           <input type="radio" name="annualIncome" value="lessThan5L">
+                           <span class="radio-label">Less than ₹5 lakhs</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="annualIncome" value="5to15L">
+                           <span class="radio-label">₹5–15 lakhs</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="annualIncome" value="16to30L">
+                           <span class="radio-label">₹16–30 lakhs</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="annualIncome" value="31to50L">
+                           <span class="radio-label">₹31–50 lakhs</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="annualIncome" value="moreThan50L">
+                           <span class="radio-label">More than ₹50 lakhs</span>
+                        </label>
+                     </div>
+                  </div>
+
+                  <div class="survey-question">
+                     <h4>4. Where do you primarily practice? <span class="required">*</span></h4>
+                     <div class="radio-group">
+                        <label class="radio-option">
+                           <input type="radio" name="practiceLocation" value="tier1">
+                           <span class="radio-label">Tier 1 City</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="practiceLocation" value="tier2">
+                           <span class="radio-label">Tier 2 City</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="practiceLocation" value="tier3">
+                           <span class="radio-label">Tier 3 Town</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="practiceLocation" value="rural">
+                           <span class="radio-label">Rural Area</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="practiceLocation" value="panIndia">
+                           <span class="radio-label">Pan-India (Remote/Online)</span>
+                        </label>
+                     </div>
+                  </div>
+
+                  <div class="survey-question">
+                     <h4>5. How many years of experience do you have in professional practice? <span
+                           class="required">*</span></h4>
+                     <div class="radio-group">
+                        <label class="radio-option">
+                           <input type="radio" name="experience" value="lessThan2">
+                           <span class="radio-label">Less than 2 years</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="experience" value="2to5">
+                           <span class="radio-label">2–5 years</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="experience" value="6to10">
+                           <span class="radio-label">6–10 years</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="experience" value="11to20">
+                           <span class="radio-label">11–20 years</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="experience" value="moreThan20">
+                           <span class="radio-label">More than 20 years</span>
+                        </label>
+                     </div>
+                  </div>
+
+                  <div class="survey-question">
+                     <h4>6. How many (paid) juniors/ team members directly assist you in your professional work? <span
+                           class="required">*</span></h4>
+                     <div class="radio-group">
+                        <label class="radio-option">
+                           <input type="radio" name="teamMembers" value="none">
+                           <span class="radio-label">None</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="teamMembers" value="1to2">
+                           <span class="radio-label">1-2</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="teamMembers" value="3to5">
+                           <span class="radio-label">3-5</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="teamMembers" value="6to10">
+                           <span class="radio-label">6-10</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="teamMembers" value="moreThan10">
+                           <span class="radio-label">More than 10</span>
+                        </label>
+                     </div>
+                  </div>
+
+                  <div class="survey-question">
+                     <h4>7. What percentage of your revenue goes into compensating (salary/ stipend/ fees) your juniors/
+                        team members? <span class="required">*</span></h4>
+                     <div class="radio-group">
+                        <label class="radio-option">
+                           <input type="radio" name="juniorCompensation" value="lessThan10">
+                           <span class="radio-label">Less than 10%</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="juniorCompensation" value="10to20">
+                           <span class="radio-label">10–20%</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="juniorCompensation" value="21to30">
+                           <span class="radio-label">21–30%</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="juniorCompensation" value="31to40">
+                           <span class="radio-label">31–40%</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="juniorCompensation" value="moreThan40">
+                           <span class="radio-label">More than 40%</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="juniorCompensation" value="notApplicable">
+                           <span class="radio-label">Not applicable (I work alone)</span>
+                        </label>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="survey-section">
+                  <h3>Section B: Understanding Professional Challenges and Discussing Probable Solutions</h3>
+                  <div class="survey-question">
+                     <h4>8. In your opinion, what pain points do professionals like you face in their practice? (Select
+                        all that apply) <span class="required">*</span></h4>
+                     <div class="checkbox-group">
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="clientBaseRevenue">
+                           <span class="checkbox-label">Difficulty in increasing client base and revenue</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="advertisingRestrictions">
+                           <span class="checkbox-label">Restrictions on advertising</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="bigFirmCompetition">
+                           <span class="checkbox-label">Big firm competition</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="geographicalLimitation">
+                           <span class="checkbox-label">Geographical limitation</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="lowQualityLeads">
+                           <span class="checkbox-label">Low-quality leads</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="scopeAmbiguity">
+                           <span class="checkbox-label">Scope ambiguity</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="tightDeadlines">
+                           <span class="checkbox-label">Tight deadlines</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="underpricing">
+                           <span class="checkbox-label">Underpricing</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="paymentDelays">
+                           <span class="checkbox-label">Payment delays</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="clientFollowups">
+                           <span class="checkbox-label">Client follow-ups</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="templatesDrafts">
+                           <span class="checkbox-label">Non-availability of templates and drafts</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="lackOfAutomation">
+                           <span class="checkbox-label">Lack of automation for repetitive tasks</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="drafting">
+                           <span class="checkbox-label">Drafting</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="poorCollaboration">
+                           <span class="checkbox-label">Poor collaboration, Inadequate Peer Support</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="teamTaskTracking">
+                           <span class="checkbox-label">Team & Task tracking gaps</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="lackOfSOPs">
+                           <span class="checkbox-label">Lack of detailed SOPs and checklists</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="complianceTracking">
+                           <span class="checkbox-label">Compliance tracking</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="painPoints" value="otherPainPoints">
+                           <span class="checkbox-label">Other: <input type="text" name="otherPainPointsText"
+                                 class="inline-input survey-input"></span>
+                        </label>
+                     </div>
+                  </div>
+
+                  <div class="survey-question">
+                     <h4>9. What issues do you face while working with assistants/ juniors? <span
+                           class="required">*</span></h4>
+                     <div class="checkbox-group">
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="juniorIssues" value="missedDeadlines">
+                           <span class="checkbox-label">Missed deadlines</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="juniorIssues" value="poorDrafting">
+                           <span class="checkbox-label">Poor Drafting and Documentation</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="juniorIssues" value="lowAccountability">
+                           <span class="checkbox-label">Low accountability</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="juniorIssues" value="communicationGaps">
+                           <span class="checkbox-label">Communication gaps</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="juniorIssues" value="lackOfUrgency">
+                           <span class="checkbox-label">Lack of urgency</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="juniorIssues" value="taskRepetition">
+                           <span class="checkbox-label">Task repetition, time wastage</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="juniorIssues" value="knowledgeLimitations">
+                           <span class="checkbox-label">Knowledge limitations</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="juniorIssues" value="trainingEffort">
+                           <span class="checkbox-label">Training effort</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="juniorIssues" value="otherJuniorIssues">
+                           <span class="checkbox-label">Other: <input type="text" name="otherJuniorIssuesText"
+                                 class="inline-input survey-input"></span>
+                        </label>
+                     </div>
+                  </div>
+
+                  <div class="survey-question">
+                     <h4>10. On an average, what percentage of your and your teams’ total working hours is spent on the
+                        following manual activities? (Select the closest percentage range for each activity below) <span
+                           class="required">*</span></h4>
+                     <div class="manual-activities-table">
+                        <div class="table-header">
+                           <span></span>
+                           <span>0%</span>
+                           <span>1–10%</span>
+                           <span>11–20%</span>
+                           <span>More than 20%</span>
+                        </div>
+                        <div class="table-row">
+                           <span>Data Entry (forms, registers, checklists, records)</span>
+                           <label><input type="radio" name="dataEntry" value="0%"></label>
+                           <label><input type="radio" name="dataEntry" value="1-10%"></label>
+                           <label><input type="radio" name="dataEntry" value="11-20%"></label>
+                           <label><input type="radio" name="dataEntry" value=">20%"></label>
+                        </div>
+                        <div class="table-row">
+                           <span>Drafting (notices, reports, minutes, letters)</span>
+                           <label><input type="radio" name="draftingManual" value="0%"></label>
+                           <label><input type="radio" name="draftingManual" value="1-10%"></label>
+                           <label><input type="radio" name="draftingManual" value="11-20%"></label>
+                           <label><input type="radio" name="draftingManual" value=">20%"></label>
+                        </div>
+                        <div class="table-row">
+                           <span>Calculations & Computations (claims, tax, financials)</span>
+                           <label><input type="radio" name="calculations" value="0%"></label>
+                           <label><input type="radio" name="calculations" value="1-10%"></label>
+                           <label><input type="radio" name="calculations" value="11-20%"></label>
+                           <label><input type="radio" name="calculations" value=">20%"></label>
+                        </div>
+                        <div class="table-row">
+                           <span>Research (laws, judgments, compliance references)</span>
+                           <label><input type="radio" name="research" value="0%"></label>
+                           <label><input type="radio" name="research" value="1-10%"></label>
+                           <label><input type="radio" name="research" value="11-20%"></label>
+                           <label><input type="radio" name="research" value=">20%"></label>
+                        </div>
+                        <div class="table-row">
+                           <span>Reviewing & Verifying Work (checking junior’s drafts, calculations, SOP
+                              follow-ups)</span>
+                           <label><input type="radio" name="reviewingWork" value="0%"></label>
+                           <label><input type="radio" name="reviewingWork" value="1-10%"></label>
+                           <label><input type="radio" name="reviewingWork" value="11-20%"></label>
+                           <label><input type="radio" name="reviewingWork" value=">20%"></label>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="survey-question">
+                     <h4>11. Which of the following factors are preventing you from adopting high-end, integrated IT
+                        tools in your practice? <span class="required">*</span></h4>
+                     <div class="checkbox-group">
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="itToolBarriers" value="lackOfAwareness">
+                           <span class="checkbox-label">Lack of awareness</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="itToolBarriers" value="highCost">
+                           <span class="checkbox-label">High cost</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="itToolBarriers" value="notUserFriendly">
+                           <span class="checkbox-label">Not user-friendly</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="itToolBarriers" value="incompatibility">
+                           <span class="checkbox-label">Incompatibility with team skill level</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="itToolBarriers" value="noClearROI">
+                           <span class="checkbox-label">No clear ROI visible</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="itToolBarriers" value="lackOfLocalSupport">
+                           <span class="checkbox-label">Lack of local support</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="itToolBarriers" value="fearOfDataSecurity">
+                           <span class="checkbox-label">Fear of data security</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="itToolBarriers" value="notRequiredForScale">
+                           <span class="checkbox-label">Not required for my scale</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="itToolBarriers" value="noneAbove">
+                           <span class="checkbox-label">None of the above</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="itToolBarriers" value="otherITBarriers">
+                           <span class="checkbox-label">Other: <input type="text" name="otherITBarriersText"
+                                 class="inline-input survey-input"></span>
+                        </label>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="survey-section">
+                  <h3>Section C: Impact of AI on my Practice</h3>
+                  <div class="survey-intro">
+                     <p><b>Please know:</b></p>
+                     <p>With rapid adoption of AI-based tools among professionals, many of your peers and competitors
+                        are already starting to integrate AI into their day-to-day practice — using it for automation,
+                        compliance tracking, drafting, client handling, and more.</p>
+                     <p>This shift is expected to accelerate in the near future and create a new level of competition in
+                        the professional services space.</p>
+                     <p>Please share your views:</p>
+                  </div>
+                  <div class="survey-question">
+                     <h4>12. As AI tools become more common in professional practice, what challenges do you anticipate
+                        facing if your competitors begin using them and you don’t?</h4>
+                     <div class="checkbox-group">
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="aiChallenges" value="losingClients">
+                           <span class="checkbox-label">Losing clients due to faster turnaround</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="aiChallenges" value="reducedPricing">
+                           <span class="checkbox-label">Reduced pricing competitiveness</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="aiChallenges" value="difficultyManagingWorkload">
+                           <span class="checkbox-label">Difficulty managing workload manually</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="aiChallenges" value="lowerQuality">
+                           <span class="checkbox-label">Lower quality of deliverables vs AI-supported competitors</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="aiChallenges" value="pressureToUpgrade">
+                           <span class="checkbox-label">Pressure to upgrade skillsets or tools</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="aiChallenges" value="teamInefficiency">
+                           <span class="checkbox-label">Team inefficiency in comparison</span>
+                        </label>
+                        <label class="checkbox-option">
+                           <input type="checkbox" name="aiChallenges" value="otherAIChallenges">
+                           <span class="checkbox-label">Other: <input type="text" name="otherAIChallengesText"
+                                 class="inline-input survey-input"></span>
+                        </label>
+                     </div>
+                  </div>
+
+                  <div class="survey-question">
+                     <h4>13. How do you view the increasing use of AI tools in professional services? <span
+                           class="required">*</span></h4>
+                     <div class="radio-group">
+                        <label class="radio-option">
+                           <input type="radio" name="aiView" value="competitiveThreat">
+                           <span class="radio-label">A competitive threat I must prepare for</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="aiView" value="opportunityToGrow">
+                           <span class="radio-label">An opportunity to grow faster and smarter</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="aiView" value="passingTrend">
+                           <span class="radio-label">A passing trend, not a real challenge</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="aiView" value="notSure">
+                           <span class="radio-label">Not sure yet</span>
+                        </label>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="survey-section">
+                  <h3>Section D: Budget Expectations for Tech-enabled Growth</h3>
+                  <div class="survey-question">
+                     <h4>14. If an AI-enabled software that significantly reduces your dependence upon juniors and
+                        assistants, charges in the range of 10% to 20% of your revenue, how likely are you to use it?
+                        <span class="required">*</span>
+                     </h4>
+                     <div class="radio-group">
+                        <label class="radio-option">
+                           <input type="radio" name="aiSoftwareLikelihood" value="willUse">
+                           <span class="radio-label">Will use</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="aiSoftwareLikelihood" value="mostLikely">
+                           <span class="radio-label">Most likely</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="aiSoftwareLikelihood" value="likely">
+                           <span class="radio-label">Likely</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="aiSoftwareLikelihood" value="willNotUse">
+                           <span class="radio-label">Will not use</span>
+                        </label>
+                     </div>
+                  </div>
+
+                  <div class="survey-question">
+                     <h4>15. If a platform offers you verified client opportunities against a 10% referral fee, how
+                        likely are you to accept the offer? <span class="required">*</span></h4>
+                     <div class="radio-group">
+                        <label class="radio-option">
+                           <input type="radio" name="referralFeeLikelihood" value="willAccept">
+                           <span class="radio-label">Will accept</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="referralFeeLikelihood" value="mostLikely">
+                           <span class="radio-label">Most likely</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="referralFeeLikelihood" value="likely">
+                           <span class="radio-label">Likely</span>
+                        </label>
+                        <label class="radio-option">
+                           <input type="radio" name="referralFeeLikelihood" value="willNotAccept">
+                           <span class="radio-label">Will not accept</span>
+                        </label>
+                     </div>
+                  </div>
+               </div>
+
+
+               <div class="survey-actions">
+                  <button type="submit" class="action-btn submit-btn">Submit Survey</button>
+                  <button type="button" class="action-btn secondary-btn" onclick="resetSurvey()">Reset Form</button>
+               </div>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
+
+<script>
+   document.getElementById('surveyForm').addEventListener('submit', async function (event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const form = event.target;
+      const formData = new FormData(form);
+
+      try {
+         const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+         });
+
+         const result = await response.json();
+
+         if (response.ok) {
+            showAlert("Success!", `Thank you for registering! Your temporary registration number is: ${result.trn}`, 'success', function() {
+                form.reset(); // Reset the form after successful submission
+                minimizeBubble(); // Minimize the survey bubble
+            });
+         } else {
+            showAlert("Error!", `Error: ${result.message}`, 'error');
+         }
+      } catch (error) {
+         showAlert("Error!", 'An unexpected error occurred. Please try again.', 'error');
+         console.error('Error submitting survey:', error);
+      }
+   });
+
+   function minimizeBubble() {
+      const floatingBubble = document.getElementById('floatingBubble');
+      if (floatingBubble) {
+         floatingBubble.classList.remove('bubble-maximized');
+         floatingBubble.classList.add('bubble-minimized');
+      }
+   }
+
+   // Function to toggle the 'Other' AI Challenges text input
+   document.addEventListener('DOMContentLoaded', function() {
+      const otherAIChallengesCheckbox = document.querySelector('input[name="aiChallenges"][value="otherAIChallenges"]');
+      const otherAIChallengesTextInput = document.querySelector('input[name="otherAIChallengesText"]');
+
+      if (otherAIChallengesCheckbox && otherAIChallengesTextInput) {
+         // Set initial state
+         otherAIChallengesTextInput.disabled = !otherAIChallengesCheckbox.checked;
+
+         // Add event listener to toggle on change
+         otherAIChallengesCheckbox.addEventListener('change', function() {
+            otherAIChallengesTextInput.disabled = !this.checked;
+         });
+      }
+   });
+
+   // Function to toggle for otherPainPointsText
+   document.addEventListener('DOMContentLoaded', function() {
+      const otherPainPointsCheckbox = document.querySelector('input[name="painPoints"][value="otherPainPoints"]');
+      const otherPainPointsTextInput = document.querySelector('input[name="otherPainPointsText"]');
+
+      if (otherPainPointsCheckbox && otherPainPointsTextInput) {
+         otherPainPointsTextInput.disabled = !otherPainPointsCheckbox.checked;
+         otherPainPointsCheckbox.addEventListener('change', function() {
+            otherPainPointsTextInput.disabled = !this.checked;
+         });
+      }
+   });
+
+   // Function to toggle for otherJuniorIssuesText
+   document.addEventListener('DOMContentLoaded', function() {
+      const otherJuniorIssuesCheckbox = document.querySelector('input[name="juniorIssues"][value="otherJuniorIssues"]');
+      const otherJuniorIssuesTextInput = document.querySelector('input[name="otherJuniorIssuesText"]');
+
+      if (otherJuniorIssuesCheckbox && otherJuniorIssuesTextInput) {
+         otherJuniorIssuesTextInput.disabled = !otherJuniorIssuesCheckbox.checked;
+         otherJuniorIssuesCheckbox.addEventListener('change', function() {
+            otherJuniorIssuesTextInput.disabled = !this.checked;
+         });
+      }
+   });
+
+   // Function to toggle for otherITBarriersText
+   document.addEventListener('DOMContentLoaded', function() {
+      const otherITBarriersCheckbox = document.querySelector('input[name="itToolBarriers"][value="otherITBarriers"]');
+      const otherITBarriersTextInput = document.querySelector('input[name="otherITBarriersText"]');
+
+      if (otherITBarriersCheckbox && otherITBarriersTextInput) {
+         otherITBarriersTextInput.disabled = !otherITBarriersCheckbox.checked;
+         otherITBarriersCheckbox.addEventListener('change', function() {
+            otherITBarriersTextInput.disabled = !this.checked;
+         });
+      }
+   });
+
+   // Function to toggle license input fields based on checkbox state
+   document.addEventListener('DOMContentLoaded', function() {
+      const practicingAsCheckboxes = document.querySelectorAll('input[name="practicingAs"]');
+
+      practicingAsCheckboxes.forEach(checkbox => {
+         const licenseInput = document.querySelector(`input[name="${checkbox.value.toLowerCase()}License"]`);
+         if (licenseInput) {
+            // Set initial state
+            licenseInput.disabled = !checkbox.checked;
+
+            // Add event listener to toggle on change
+            checkbox.addEventListener('change', function() {
+               licenseInput.disabled = !this.checked;
+            });
+         }
+      });
+   });
+</script>

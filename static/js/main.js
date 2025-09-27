@@ -116,7 +116,7 @@
 			effect: 'fade',
 
 			autoplay: {
-				delay: 5000000,
+				delay: 10000,
 			},
 
 			// If we need pagination
@@ -447,5 +447,73 @@
 			inputs[handle].value = values[handle];
 		});
 	}
+
+	////////////////////////////////////////////////////
+	// Password Toggle
+	$('.toggle-password').on('click', function() {
+		var target = $(this).attr('id') === 'togglePassword' ? '#login-form input[name="password"]':
+					 $(this).attr('id') === 'togglePasswordRegister' ? '#register-form input[name="password"]':
+					 '#register-form input[name="confirm_password"]';
+		var passwordField = $(target);
+		var fieldType = passwordField.attr('type');
+		
+		if (fieldType === 'password') {
+			passwordField.attr('type', 'text');
+			$(this).removeClass('fa-eye-slash').addClass('fa-eye');
+		} else {
+			passwordField.attr('type', 'password');
+			$(this).removeClass('fa-eye').addClass('fa-eye-slash');
+		}
+	});
+
+	// 24. Pop-up Alert Functionality
+	function showAlert(title, message, type = 'default', onOkCallback) { // Added 'type' parameter
+		const popupContainer = $('#bd-popup-alert');
+		const popupHeader = popupContainer.find('.bd-popup-header');
+		const popupTitle = $('#bd-popup-title');
+		const popupMessage = $('#bd-popup-message');
+		const closeButton = popupContainer.find('.bd-popup-close');
+		const okButton = popupContainer.find('.bd-popup-btn');
+		const popupOverlay = $('#bd-popup-overlay');
+
+		// Reset header classes and add type-specific class
+		popupHeader.removeClass('success error').addClass(type);
+
+		// Set title with icon
+		let iconHtml = '';
+		if (type === 'success') {
+			iconHtml = '<i class="fal fa-check-circle"></i>';
+		} else if (type === 'error') {
+			iconHtml = '<i class="fal fa-times-circle"></i>';
+		} else {
+			iconHtml = '<i class="fal fa-info-circle"></i>'; // Default icon
+		}
+		popupTitle.html(iconHtml + title);
+		popupMessage.text(message);
+
+		// Remove previous event listeners to prevent multiple firings
+		closeButton.off('click');
+		okButton.off('click');
+
+		const hidePopup = function() {
+			popupContainer.removeClass('show');
+			popupOverlay.removeClass('show');
+		};
+
+		closeButton.on('click', hidePopup);
+
+		okButton.on('click', function() {
+			hidePopup();
+			if (onOkCallback && typeof onOkCallback === 'function') {
+				onOkCallback();
+			}
+		});
+
+		popupContainer.addClass('show');
+		popupOverlay.addClass('show');
+	}
+
+	// Expose showAlert to the global scope
+	window.showAlert = showAlert;
 
 })(jQuery);
