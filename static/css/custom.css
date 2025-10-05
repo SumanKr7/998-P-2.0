@@ -2066,7 +2066,7 @@
 }
 
 .faq-content.show {
-    max-height: 2000px; /* Adjust as needed */
+    max-height: 5000px; /* Adjust as needed */
     transition: max-height 0.5s ease-in;
 }
 
