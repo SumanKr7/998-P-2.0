@@ -489,7 +489,7 @@
 			iconHtml = '<i class="fal fa-info-circle"></i>'; // Default icon
 		}
 		popupTitle.html(iconHtml + title);
-		popupMessage.text(message);
+		popupMessage.html(message);
 
 		// Remove previous event listeners to prevent multiple firings
 		closeButton.off('click');

@@ -1,6 +1,6 @@
 <div class="floating-bubble {{ 'bubble-maximized' if current_path == '/' else 'bubble-minimized' }}"
    id="floatingBubble">
-   <div class="bubble-content">
+   <div class="bubble-content" style="box-shadow: 7px 7px 10px 7px rgba(0, 0, 0, 0.2);">
       <!-- Minimized view -->
       <div class="bubble-icon">Survey</div>
 
@@ -23,35 +23,69 @@
             <div class="survey-container">
                <!-- Survey Questions -->
                <div class="survey-intro">
-                  <p>As a gesture of appreciation for your valuable inputs, professionals who complete this survey with
-                     fair and thoughtful estimations will be eligible to receive a FREE 1-year subscription to any one
-                     of our upcoming ERP systems - Drive (IP:) / Drive (CA:) / Drive (CS:) / Drive (Lawyer:) / Drive
-                     (CMA:) / Drive (Valuer:) - specially designed for you!
+                  <p class="text-center fs-5">This Survey should take less than 10 minutes</p>
+                  <p class="text-center survay-subheading">Rest assured, all personal data collected through this survey
+                     will be kept confidential and anonymous and will not be shared with any third parties without your
+                     explicit consent.</p>
+                  <p style="color: #000;">As a gesture of appreciation for your valuable inputs, Professionals who
+                     complete this survey with fair and thoughtful answers get a Temporary Registration Number (TRN) and
+                     will be eligible to receive a WIN-Voucher* worth ₹5,000. TRN will be required for claiming
+                     <a class="custom-color" href="/thank-you-professionals"><b>WIN-Vouchers</b></a> and <a class="custom-color" href="/thank-you-professionals"><b>Referral Credits</b></a>.
                   </p>
-                  <p>Please complete survay to receive your Win-Voucher* upon verification.</p>
-                  <p class="small-text">*Cross-verification of your identity and profession may be undertaken before
-                     issuing the Win-Voucher.</p>
+                  <p class="" style="font-size: 8px;">*Subject to cross-verification of your identity and profession. Please read Survey T&C for details.
+                  </p>
                </div>
 
-               
+               <div class="survey-section">
+                  <h3>Optional</h3>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="survey-question">
+                           <h4>Registration No.:</h4>
+                           <input type="text" class="survey-input1" name="registrationNo"
+                              placeholder="Enter registration number (If available)">
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="survey-question">
+                           <h4>Referred By:</h4>
+                           <input type="text" class="survey-input1" name="referredBy"
+                              placeholder="Enter referrer's PRN/ TRN (If available)">
+                        </div>
+                     </div>
+                  </div>
+               </div>
 
                <div class="survey-section">
                   <h3>Your Details</h3>
-                  <div class="survey-question">
-                     <h4>Your Full Name: <span class="required">*</span></h4>
-                     <input type="text" class="survey-input1" name="fullName">
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="survey-question">
+                           <h4>Your Full Name: <span class="required">*</span></h4>
+                           <input type="text" class="survey-input1" name="fullName" placeholder="Enter your full name">
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="survey-question">
+                           <h4>Mobile Number: <span class="required">*</span></h4>
+                           <input type="tel" class="survey-input1" name="mobileNumber"
+                              placeholder="Enter your mobile number">
+                        </div>
+                     </div>
                   </div>
-                  <div class="survey-question">
-                     <h4>Mobile Number: <span class="required">*</span></h4>
-                     <input type="tel" class="survey-input1" name="mobileNumber">
-                  </div>
-                  <div class="survey-question">
-                     <h4>Email Id: <span class="required">*</span></h4>
-                     <input type="email" class="survey-input1" name="emailId">
-                  </div>
-                  <div class="survey-question">
-                     <h4>Location: <span class="required">*</span></h4>
-                     <input type="text" class="survey-input1" name="location">
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="survey-question">
+                           <h4>Email Id: <span class="required">*</span></h4>
+                           <input type="email" class="survey-input1" name="emailId" placeholder="Enter your email ID">
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="survey-question">
+                           <h4>Location: <span class="required">*</span></h4>
+                           <input type="text" class="survey-input1" name="location" placeholder="Enter your location">
+                        </div>
+                     </div>
                   </div>
                </div>
 
@@ -65,42 +99,48 @@
                               <input type="checkbox" name="practicingAs" value="CA" id="practicingAsCA">
                               <span class="checkbox-label">CA</span>
                            </label>
-                           <input type="text" name="caLicense" class="inline-input1 survey-input1 license-input" placeholder="CA License No." disabled>
+                           <input type="text" name="caLicense" class="inline-input1 survey-input1 license-input"
+                              placeholder="ICAI Membership No." disabled>
                         </div>
                         <div class="checkbox-item">
                            <label class="checkbox-option">
                               <input type="checkbox" name="practicingAs" value="CS" id="practicingAsCS">
                               <span class="checkbox-label">CS</span>
                            </label>
-                           <input type="text" name="csLicense" class="inline-input1 survey-input1 license-input" placeholder="CS License No." disabled>
+                           <input type="text" name="csLicense" class="inline-input1 survey-input1 license-input"
+                              placeholder="ICSI Membership No." disabled>
                         </div>
                         <div class="checkbox-item">
                            <label class="checkbox-option">
                               <input type="checkbox" name="practicingAs" value="Lawyer" id="practicingAsLawyer">
                               <span class="checkbox-label">Lawyer</span>
                            </label>
-                           <input type="text" name="lawyerLicense" class="inline-input1 survey-input1 license-input" placeholder="Lawyer License No." disabled>
+                           <input type="text" name="lawyerLicense" class="inline-input1 survey-input1 license-input"
+                              placeholder="Bar Council Enrollment No." disabled>
                         </div>
                         <div class="checkbox-item">
                            <label class="checkbox-option">
                               <input type="checkbox" name="practicingAs" value="IP" id="practicingAsIP">
                               <span class="checkbox-label">IP</span>
                            </label>
-                           <input type="text" name="ipLicense" class="inline-input1 survey-input1 license-input" placeholder="IP License No." disabled>
+                           <input type="text" name="ipLicense" class="inline-input1 survey-input1 license-input"
+                              placeholder="IBBI Registration No." disabled>
                         </div>
                         <div class="checkbox-item">
                            <label class="checkbox-option">
                               <input type="checkbox" name="practicingAs" value="CMA" id="practicingAsCMA">
                               <span class="checkbox-label">CMA</span>
                            </label>
-                           <input type="text" name="cmaLicense" class="inline-input1 survey-input1 license-input" placeholder="CMA License No." disabled>
+                           <input type="text" name="cmaLicense" class="inline-input1 survey-input1 license-input"
+                              placeholder="ICMAI Membership No." disabled>
                         </div>
                         <div class="checkbox-item">
                            <label class="checkbox-option">
                               <input type="checkbox" name="practicingAs" value="Valuer" id="practicingAsValuer">
                               <span class="checkbox-label">Valuer</span>
                            </label>
-                           <input type="text" name="valuerLicense" class="inline-input1 survey-input1 license-input" placeholder="Valuer License No." disabled>
+                           <input type="text" name="valuerLicense" class="inline-input1 survey-input1 license-input"
+                              placeholder="Registration No." disabled>
                         </div>
                      </div>
                   </div>
@@ -636,9 +676,9 @@
          const result = await response.json();
 
          if (response.ok) {
-            showAlert("Success!", `Thank you for registering! Your temporary registration number is: ${result.trn}`, 'success', function() {
-                form.reset(); // Reset the form after successful submission
-                minimizeBubble(); // Minimize the survey bubble
+            showAlert("Thank You", "<span style=\"font-size: 18px;\">Thank you for participating.</span><br><span style=\"font-size: 18px;\">Your temporary registration number (TRN) is " + result.trn + ".</span><br><span style=\"font-size: 12px;\">Please check your email for the WIN-Voucher and other details.</span>", 'success', function () {
+               form.reset(); // Reset the form after successful submission
+               minimizeBubble(); // Minimize the survey bubble
             });
          } else {
             showAlert("Error!", `Error: ${result.message}`, 'error');
@@ -658,7 +698,7 @@
    }
 
    // Function to toggle the 'Other' AI Challenges text input
-   document.addEventListener('DOMContentLoaded', function() {
+   document.addEventListener('DOMContentLoaded', function () {
       const otherAIChallengesCheckbox = document.querySelector('input[name="aiChallenges"][value="otherAIChallenges"]');
       const otherAIChallengesTextInput = document.querySelector('input[name="otherAIChallengesText"]');
 
@@ -667,53 +707,53 @@
          otherAIChallengesTextInput.disabled = !otherAIChallengesCheckbox.checked;
 
          // Add event listener to toggle on change
-         otherAIChallengesCheckbox.addEventListener('change', function() {
+         otherAIChallengesCheckbox.addEventListener('change', function () {
             otherAIChallengesTextInput.disabled = !this.checked;
          });
       }
    });
 
    // Function to toggle for otherPainPointsText
-   document.addEventListener('DOMContentLoaded', function() {
+   document.addEventListener('DOMContentLoaded', function () {
       const otherPainPointsCheckbox = document.querySelector('input[name="painPoints"][value="otherPainPoints"]');
       const otherPainPointsTextInput = document.querySelector('input[name="otherPainPointsText"]');
 
       if (otherPainPointsCheckbox && otherPainPointsTextInput) {
          otherPainPointsTextInput.disabled = !otherPainPointsCheckbox.checked;
-         otherPainPointsCheckbox.addEventListener('change', function() {
+         otherPainPointsCheckbox.addEventListener('change', function () {
             otherPainPointsTextInput.disabled = !this.checked;
          });
       }
    });
 
    // Function to toggle for otherJuniorIssuesText
-   document.addEventListener('DOMContentLoaded', function() {
+   document.addEventListener('DOMContentLoaded', function () {
       const otherJuniorIssuesCheckbox = document.querySelector('input[name="juniorIssues"][value="otherJuniorIssues"]');
       const otherJuniorIssuesTextInput = document.querySelector('input[name="otherJuniorIssuesText"]');
 
       if (otherJuniorIssuesCheckbox && otherJuniorIssuesTextInput) {
          otherJuniorIssuesTextInput.disabled = !otherJuniorIssuesCheckbox.checked;
-         otherJuniorIssuesCheckbox.addEventListener('change', function() {
+         otherJuniorIssuesCheckbox.addEventListener('change', function () {
             otherJuniorIssuesTextInput.disabled = !this.checked;
          });
       }
    });
 
    // Function to toggle for otherITBarriersText
-   document.addEventListener('DOMContentLoaded', function() {
+   document.addEventListener('DOMContentLoaded', function () {
       const otherITBarriersCheckbox = document.querySelector('input[name="itToolBarriers"][value="otherITBarriers"]');
       const otherITBarriersTextInput = document.querySelector('input[name="otherITBarriersText"]');
 
       if (otherITBarriersCheckbox && otherITBarriersTextInput) {
          otherITBarriersTextInput.disabled = !otherITBarriersCheckbox.checked;
-         otherITBarriersCheckbox.addEventListener('change', function() {
+         otherITBarriersCheckbox.addEventListener('change', function () {
             otherITBarriersTextInput.disabled = !this.checked;
          });
       }
    });
 
    // Function to toggle license input fields based on checkbox state
-   document.addEventListener('DOMContentLoaded', function() {
+   document.addEventListener('DOMContentLoaded', function () {
       const practicingAsCheckboxes = document.querySelectorAll('input[name="practicingAs"]');
 
       practicingAsCheckboxes.forEach(checkbox => {
@@ -723,7 +763,7 @@
             licenseInput.disabled = !checkbox.checked;
 
             // Add event listener to toggle on change
-            checkbox.addEventListener('change', function() {
+            checkbox.addEventListener('change', function () {
                licenseInput.disabled = !this.checked;
             });
          }

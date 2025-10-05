@@ -127,6 +127,8 @@ def submit_survey():
         mobile_number = request.form.get("mobileNumber")
         email_id = request.form.get("emailId")
         location = request.form.get("location")
+        registration_no = request.form.get("registrationNo")
+        referred_by = request.form.get("referredBy")
 
         # Check if emailId or mobileNumber already exists
         if survey_responses.find_one({"$or": [{"emailId": email_id}, {"mobileNumber": mobile_number}]}):
@@ -182,7 +184,7 @@ def submit_survey():
             return jsonify({"status": "danger", "message": "Personal details (Full Name, Mobile Number, Email ID, Location) are required!"}), 400
 
         if not practicing_as:
-            return jsonify({"status": "danger", "message": "Please select at least one professional category you are practicing as."}), 400
+            return jsonify({"status": "danger", "message": "Question 1 is empty. Please complete it before submitting the survey."}), 400
 
         # Validate if selected practicingAs checkboxes have corresponding license numbers if required
         for profession in practicing_as:
@@ -191,58 +193,58 @@ def submit_survey():
                 return jsonify({"status": "danger", "message": f"Please enter the license number for {profession}."}), 400
 
         if not how_operate:
-            return jsonify({"status": "danger", "message": "Please select how you operate."}), 400
+            return jsonify({"status": "danger", "message": "Question 2 is empty. Please complete it before submitting the survey."}), 400
 
         if not annual_income:
-            return jsonify({"status": "danger", "message": "Please select your annual professional income."}), 400
+            return jsonify({"status": "danger", "message": "Question 3 is empty. Please complete it before submitting the survey."}), 400
 
         if not practice_location:
-            return jsonify({"status": "danger", "message": "Please select your primary practice location."}), 400
+            return jsonify({"status": "danger", "message": "Question 4 is empty. Please complete it before submitting the survey."}), 400
 
         if not experience:
-            return jsonify({"status": "danger", "message": "Please select your years of experience."}), 400
+            return jsonify({"status": "danger", "message": "Question 5 is empty. Please complete it before submitting the survey."}), 400
 
         if not team_members:
-            return jsonify({"status": "danger", "message": "Please select the number of juniors/team members assisting you."}), 400
+            return jsonify({"status": "danger", "message": "Question 6 is empty. Please complete it before submitting the survey."}), 400
 
         if not junior_compensation:
-            return jsonify({"status": "danger", "message": "Please select the percentage of revenue for junior/team member compensation."}), 400
+            return jsonify({"status": "danger", "message": "Question 7 is empty. Please complete it before submitting the survey."}), 400
 
         if not pain_points:
-            return jsonify({"status": "danger", "message": "Please select at least one pain point you face in your practice."}), 400
+            return jsonify({"status": "danger", "message": "Question 8 is empty. Please complete it before submitting the survey."}), 400
 
         if "otherPainPoints" in pain_points and not other_pain_points_text:
-            return jsonify({"status": "danger", "message": "Please specify the other pain point."}), 400
+            return jsonify({"status": "danger", "message": "Please specify the other pain point in question 8."}), 400
 
         if not junior_issues:
-            return jsonify({"status": "danger", "message": "Please select at least one issue you face while working with assistants/juniors."}), 400
+            return jsonify({"status": "danger", "message": "Question 9 is empty. Please complete it before submitting the survey."}), 400
         
         if "otherJuniorIssues" in junior_issues and not other_junior_issues_text:
-            return jsonify({"status": "danger", "message": "Please specify the other junior issue."}), 400
+            return jsonify({"status": "danger", "message": "Please specify the other junior issue in question 9."}), 400
 
         if not (data_entry and drafting_manual and calculations and research and reviewing_work):
-            return jsonify({"status": "danger", "message": "Please select a percentage range for all manual activities."}), 400
+            return jsonify({"status": "danger", "message": "Question 10 is empty. Please complete it before submitting the survey."}), 400
 
         if not it_tool_barriers:
-            return jsonify({"status": "danger", "message": "Please select at least one factor preventing you from adopting IT tools."}), 400
+            return jsonify({"status": "danger", "message": "Question 11 is empty. Please complete it before submitting the survey."}), 400
         
         if "otherITBarriers" in it_tool_barriers and not other_it_barriers_text:
-            return jsonify({"status": "danger", "message": "Please specify the other IT tool barrier."}), 400
+            return jsonify({"status": "danger", "message": "Please specify the other IT tool barrier in question 11."}), 400
 
         if not ai_challenges:
-            return jsonify({"status": "danger", "message": "Please select at least one challenge you anticipate facing with AI tools."}), 400
+            return jsonify({"status": "danger", "message": "Question 12 is empty. Please complete it before submitting the survey."}), 400
 
         if "otherAIChallenges" in ai_challenges and not other_ai_challenges_text:
-            return jsonify({"status": "danger", "message": "Please specify the other AI challenge."}), 400
+            return jsonify({"status": "danger", "message": "Please specify the other AI challenge in question 12."}), 400
 
         if not ai_view:
-            return jsonify({"status": "danger", "message": "Please select your view on the increasing use of AI tools."}), 400
+            return jsonify({"status": "danger", "message": "Question 13 is empty. Please complete it before submitting the survey."}), 400
 
         if not ai_software_likelihood:
-            return jsonify({"status": "danger", "message": "Please select your likelihood of using AI-enabled software."}), 400
+            return jsonify({"status": "danger", "message": "Question 14 is empty. Please complete it before submitting the survey."}), 400
 
         if not referral_fee_likelihood:
-            return jsonify({"status": "danger", "message": "Please select your likelihood of accepting a referral fee offer."}), 400
+            return jsonify({"status": "danger", "message": "Question 15 is empty. Please complete it before submitting the survey."}), 400
 
         # Validate name, email, mobile (existing validations)
         name_error = validate_name(full_name)
@@ -267,6 +269,8 @@ def submit_survey():
             "mobileNumber": mobile_number,
             "emailId": email_id,
             "location": location,
+            "registrationNo": registration_no,
+            "referredBy": referred_by,
             "practicingAs": practicing_as_details,
             "howOperate": how_operate,
             "annualIncome": annual_income,
@@ -298,10 +302,8 @@ def submit_survey():
         survey_data["trn"] = trn
 
         survey_responses.insert_one(survey_data)
-        print(f"Survey submitted successfully. TRN: {trn}")
         return jsonify({"status": "success", "message": "Survey submitted successfully! Your Temporary Registration Number (TRN) is", "trn": trn}), 200
     except Exception as e:
-        print(f"An unexpected error occurred: {e}")
         return jsonify({"status": "danger", "message": f"Error submitting survey: {e}"}), 500
 
 # ---------- Subscription ----------
@@ -320,6 +322,22 @@ def subscribe():
             return jsonify({"status": "success", "message": "Successfully subscribed."}), 200
     else:
         return jsonify({"status": "danger", "message": "Please enter a valid email address."}), 400
+
+@app.route("/thank-you-professionals")
+def thank_you_professionals():
+    return render_template("thank-you-professionals.html", current_path=request.path)
+
+@app.route("/platform-t&c")
+def platform_t_and_c():
+    return render_template("platform-t&c.html", current_path=request.path)
+
+@app.route("/privacy-policy")
+def privacy_policy():
+    return render_template("privacy-policy.html", current_path=request.path)
+
+@app.route("/survey-t&c")
+def survey_t_and_c():
+    return render_template("survey-t&c.html", current_path=request.path)
 
 # ---------- Run App ----------
 if __name__ == '__main__':

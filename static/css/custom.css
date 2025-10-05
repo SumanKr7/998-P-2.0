@@ -213,20 +213,21 @@
   display: inline-flex;
   align-items: center;
   padding: 14px 28px;
-  background: #fff;
-  color: var(--bd-theme-primary);
+  background: var(--bd-theme-primary);
+  color: #fff;
   font-size: 1rem;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 500;
   border: 1px solid var(--bd-theme-primary);
   transition: 0.3s;
+  animation: pulse 1.5s infinite;
 }
 
 .hero-btn:hover {
-  background: var(--bd-theme-primary);
+  background: #fff;
   border-color: var(--bd-theme-primary);
-  color: #fff;
+  color: var(--bd-theme-primary);
 }
 
 /* ===============================
@@ -975,6 +976,7 @@
 
   .triangle-header .bd-section__title {
     font-size: 22px;
+    padding: 0px 80px;
   }
 }
 
@@ -1037,8 +1039,15 @@
   cursor: grab;
   user-select: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  top: 150px;
-  left: 25px;
+  top: 30px;
+  left: 17px;
+}
+
+@media (max-width: 992px) {
+  .floating-bubble {
+    top: 100px;
+    left: 17px;
+  }
 }
 
 .floating-bubble:active {
@@ -1069,14 +1078,14 @@
   border-radius: 50px;
   align-items: center;
   justify-content: center;
-  background: #fff;
-  border: 1px solid var(--bd-theme-primary);
+  background: var(--bd-theme-primary);
+  border: 1px solid #fff;
   cursor: pointer;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .bubble-minimized .bubble-icon {
-  color: var(--bd-theme-primary);
+  color: #fff;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -1215,18 +1224,20 @@
   box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
 }
 
-/* Animations */
 @keyframes pulse {
-
-  0%,
-  100% {
-    transform: scale(1);
+  0% {
+    box-shadow: 0 0 0 0 rgb(179, 24, 0);
   }
 
-  50% {
-    transform: scale(1.1);
+  70% {
+    box-shadow: 0 0 0 20px rgba(179, 23, 0, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(179, 23, 0, 0);
   }
 }
+
 
 @keyframes slideIn {
   from {
@@ -2778,6 +2789,7 @@
     text-transform: uppercase;
     display: flex;
     align-items: center;
+    color: #fff;
 }
 
 .bd-popup-title i {
@@ -2897,4 +2909,13 @@
   padding: 5px 9px;
   border-radius: 6px;
   font-size: 11px;
+}
+.survay-subheading{
+  padding:  0px 100px;
+}
+@media (max-width: 768px) {
+  .survay-subheading{
+    padding:  0px 20px;
+    text-align: justify;
+  }
 }
