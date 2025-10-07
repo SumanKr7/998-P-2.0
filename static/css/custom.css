@@ -2919,3 +2919,6 @@
     text-align: justify;
   }
 }
+.bold-list-style li::marker {
+  font-weight: bold;
+}
