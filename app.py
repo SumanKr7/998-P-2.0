@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from dotenv import load_dotenv
 import os
 from pymongo import MongoClient
+from datetime import datetime
 import re
 
 # Load .env variables
@@ -84,7 +85,8 @@ def contact_us():
             "name": name,
             "email": email,
             "mobile": mobile,
-            "message": message
+            "message": message,
+            "createdAt": datetime.utcnow()
         }
         contact_messages.insert_one(contact_data)
         return jsonify({"status": "success", "message": "Your message has been sent successfully!"}), 200
@@ -295,7 +297,8 @@ def submit_survey():
             "otherAIChallengesText": other_ai_challenges_text if "otherAIChallenges" in ai_challenges else "",
             "aiView": ai_view,
             "aiSoftwareLikelihood": ai_software_likelihood,
-            "referralFeeLikelihood": referral_fee_likelihood
+            "referralFeeLikelihood": referral_fee_likelihood,
+            "createdAt": datetime.utcnow()
         }
 
         trn = generate_trn()
@@ -318,7 +321,7 @@ def subscribe():
         if subscriptions.find_one({"email": email}):
             return jsonify({"status": "info", "message": "You are already subscribed."}), 200
         else:
-            subscriptions.insert_one({"email": email})
+            subscriptions.insert_one({"email": email, "createdAt": datetime.utcnow()})
             return jsonify({"status": "success", "message": "Successfully subscribed."}), 200
     else:
         return jsonify({"status": "danger", "message": "Please enter a valid email address."}), 400
